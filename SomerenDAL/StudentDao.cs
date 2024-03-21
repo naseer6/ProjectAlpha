@@ -14,6 +14,8 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        
+
         private List<Student> ReadTables(DataTable dataTable)
         {
             List<Student> students = new List<Student>();
