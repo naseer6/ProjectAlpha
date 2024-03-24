@@ -54,6 +54,7 @@ namespace SomerenDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+
         public List<Order> GetOrdersByDateRange(DateTime startDate, DateTime endDate)
         {
             string query = "SELECT o.Student_ID, o.Drink_ID, o.Date, o.Quantity, d.Price " +

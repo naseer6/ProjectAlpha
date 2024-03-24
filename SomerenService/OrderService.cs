@@ -22,6 +22,7 @@ namespace SomerenService
             List<Order> orders = orderdb.GetAllOrders();
             return orders;
         }
+
         public void InsertOrder(Order order)
         {
             orderdb.InsertOrder(order);
@@ -37,10 +38,25 @@ namespace SomerenService
         {
             List<Order> orders = orderdb.GetOrdersByDateRange(startDate, endDate);
 
-            // Filter out orders with null Drink property
-            orders = orders.Where(o => o.Drink != null).ToList();
+            
+            orders = orders.Where(o => o.Drink_ID != 0).ToList();
 
-            decimal turnover = orders.Sum(o => o.Quantity * o.Drink.Price);
+            decimal turnover = 0;
+
+            
+            var drinkdb = new DrinkDao();
+
+            foreach (var order in orders)
+            {
+               
+                Drink drink = drinkdb.GetDrinkById(order.Drink_ID);
+                if (drink != null)
+                {
+                    
+                    turnover += order.Quantity * drink.Price;
+                }
+            }
+
             return turnover;
         }
 
@@ -50,6 +66,7 @@ namespace SomerenService
             int numberOfCustomers = orders.Select(o => o.Student_ID).Distinct().Count();
             return numberOfCustomers;
         }
-
     }
+
 }
+

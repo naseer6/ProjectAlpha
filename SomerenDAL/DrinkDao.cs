@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Microsoft.Data.SqlClient;
 using SomerenModel;
 
@@ -65,21 +66,24 @@ namespace SomerenDAL
         private List<Drink> ReadTables(DataTable dataTable)
         {
             List<Drink> drinks = new List<Drink>();
+
             foreach (DataRow dr in dataTable.Rows)
             {
                 Drink drink = new Drink()
                 {
-
                     Id = (int)dr["Id"],
                     Name = dr["Name"].ToString(),
                     Type = dr["Type"].ToString(),
                     Price = (decimal)dr["Price"],
                     Stock = (int)dr["Stock"]
                 };
+
                 drinks.Add(drink);
             }
+
             return drinks;
         }
+
 
         public List<Drink> GetDrinksByDateRange(DateTime startDate, DateTime endDate)
         {
@@ -97,6 +101,20 @@ namespace SomerenDAL
             DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
             return ReadTables(dataTable);
         }
+
+        public Drink GetDrinkById(int drinkId)
+        {
+            string query = "SELECT Id, Name, Type, Price, Stock FROM [Drink] WHERE Id = @Id";
+            SqlParameter[] sqlParameters =
+            {
+        new SqlParameter("@Id", drinkId)
+    };
+
+            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
+            return ReadTables(dataTable).FirstOrDefault(); 
+        }
+
+
 
     }
 }
