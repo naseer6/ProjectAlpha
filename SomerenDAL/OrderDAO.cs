@@ -24,16 +24,17 @@ namespace SomerenDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order()
-                {
-                    
-                    Student_ID = (int)dr["Student_ID"],
-                    Drink_ID = (int)dr["Drink_ID"],
-                    Date = (DateTime)dr["Date"],
-                    Quantity = (int)dr["Quantity"]
-                };
+                Order order = new Order();
+
+                // Check for DBNull values before casting
+                order.Student_ID = dr["Student_ID"] != DBNull.Value ? (int)dr["Student_ID"] : 0;
+                order.Drink_ID = dr["Drink_ID"] != DBNull.Value ? (int)dr["Drink_ID"] : 0;
+                order.Date = dr["Date"] != DBNull.Value ? (DateTime)dr["Date"] : DateTime.MinValue;
+                order.Quantity = dr["Quantity"] != DBNull.Value ? (int)dr["Quantity"] : 0;
+
                 orders.Add(order);
             }
+
             return orders;
         }
 
@@ -43,7 +44,7 @@ namespace SomerenDAL
 
             SqlParameter[] sqlParameters =
             {
-                
+
                 new SqlParameter("@Student_ID", order.Student_ID),
                 new SqlParameter("@Drink_ID", order.Drink_ID),
                 new SqlParameter("@Date", order.Date),
@@ -52,5 +53,26 @@ namespace SomerenDAL
 
             ExecuteEditQuery(query, sqlParameters);
         }
+
+        public List<Order> GetOrdersByDateRange(DateTime startDate, DateTime endDate)
+        {
+            string query = "SELECT o.Student_ID, o.Drink_ID, o.Date, o.Quantity, d.Price " +
+                           "FROM [Orders] o " +
+                           "INNER JOIN [Drink] d ON o.Drink_ID = d.Id " +
+                           "WHERE o.Date >= @StartDate AND o.Date <= @EndDate";
+
+            SqlParameter[] sqlParameters =
+            {
+        new SqlParameter("@StartDate", startDate),
+        new SqlParameter("@EndDate", endDate)
+    };
+
+            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
+            return ReadTables(dataTable);
+        }
+
+
+
+
     }
 }
