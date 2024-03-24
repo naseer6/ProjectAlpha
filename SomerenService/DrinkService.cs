@@ -34,5 +34,6 @@ namespace SomerenService
         {
             drinkdb.DeleteDrink(id);
         }
+
     }
 }

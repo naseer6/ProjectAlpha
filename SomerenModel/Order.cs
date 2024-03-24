@@ -15,6 +15,6 @@ namespace SomerenModel
         public DateTime Date { get; set; }
 
         public int Quantity { get; set; }
-        public Drink Drink { get; set; }
+        
     }
 }
