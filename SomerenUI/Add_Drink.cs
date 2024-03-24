@@ -30,10 +30,18 @@ namespace SomerenUI
             try
             {
                 drink.Name = textBoxName.Text;
-                drink.Price = decimal.Parse(textBoxPrice.Text);
                 drink.Type = comboBoxType.Text;
-
-                DialogResult = DialogResult.OK;
+                decimal price = decimal.Parse(textBoxPrice.Text);
+                if (price > 0)
+                {
+                    drink.Price = price;
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Value");
+                    DialogResult = DialogResult.No;
+                }
             }
             catch(Exception ex)
             {
