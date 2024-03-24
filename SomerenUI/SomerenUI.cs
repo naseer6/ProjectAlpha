@@ -335,7 +335,7 @@ namespace SomerenUI
         private void barManagmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bar_Managment bar_Managment = new Bar_Managment();
-            bar_Managment.Show();
+            bar_Managment.ShowDialog();
         }
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
@@ -404,6 +404,12 @@ namespace SomerenUI
             ShowOrderDrinksPanel();
         }
 
+        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lecturer_Supervises lecturer_Supervises = new Lecturer_Supervises();
+            lecturer_Supervises.ShowDialog();
+        }
+        
         private void txtOrder_TextChanged_1(object sender, EventArgs e)
         {
             CalculateAmount();
