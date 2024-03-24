@@ -590,6 +590,7 @@
             btnPlaceOrder.TabIndex = 8;
             btnPlaceOrder.Text = "Place Order";
             btnPlaceOrder.UseVisualStyleBackColor = true;
+            btnPlaceOrder.Click += btnPlaceOrder_Click_1;
             // 
             // lblResult
             // 
@@ -628,6 +629,7 @@
             txtOrder.Name = "txtOrder";
             txtOrder.Size = new System.Drawing.Size(201, 39);
             txtOrder.TabIndex = 1;
+            txtOrder.TextChanged += txtOrder_TextChanged_1;
             // 
             // listViewDrinksOrder
             // 
