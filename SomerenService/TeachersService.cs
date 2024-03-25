@@ -18,13 +18,5 @@ namespace SomerenService
             List<Teacher> teachers = teacherdb.GetAllLecturers();
             return teachers;
         }
-        public List<Teacher> GetByActivityId(int id)
-        {
-            return teacherdb.GetByActivityId(id);
-        }
-        public List<Teacher> GetNonAssignedLecturers(int id)
-        {
-            return teacherdb.GetNonAssignedLecturers(id);
-        }
     }
 }

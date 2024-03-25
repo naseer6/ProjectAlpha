@@ -29,15 +29,14 @@ namespace SomerenUI
         {
             try
             {
-                int stock = int.Parse(textBoxStock.Text);
-                if(stock < 0)
+                _drink.Stock = int.Parse(textBoxStock.Text);
+                if(_drink.Stock < 0)
                 {
                     MessageBox.Show("invalid value");
                     DialogResult = DialogResult.No;
                 }
                 else
                 {
-                    _drink.Stock = stock;
                     DialogResult = DialogResult.OK;
                 }
             }
