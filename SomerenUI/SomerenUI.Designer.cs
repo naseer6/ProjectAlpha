@@ -174,7 +174,7 @@
             supervisorsToolStripMenuItem.Name = "supervisorsToolStripMenuItem";
             supervisorsToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             supervisorsToolStripMenuItem.Text = "Supervisors";
-            supervisorsToolStripMenuItem.Click += supervisorsToolStripMenuItem_Click;
+            //supervisorsToolStripMenuItem.Click += supervisorsToolStripMenuItem_Click;
             // 
             // roomsToolStripMenuItem
             // 

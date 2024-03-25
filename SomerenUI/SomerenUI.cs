@@ -15,12 +15,11 @@ namespace SomerenUI
     {
 
         private DrinkService drinkService = new DrinkService();
-        private OrderService orderService;
 
         public SomerenUI()
         {
             InitializeComponent();
-            orderService = new OrderService();
+
         }
 
 
@@ -295,28 +294,16 @@ namespace SomerenUI
 
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             DateTime startDate = dtpStartDate.Value.Date;
             DateTime endDate = dtpEndDate.Value.Date;
 
-            // Check if the selected date range is valid
             if (endDate < startDate || endDate > DateTime.Today)
             {
                 MessageBox.Show("Please select a valid date period.");
                 return;
             }
-
-            // Generate the revenue report
-            int totalDrinksSold = orderService.GetTotalDrinksSold(startDate, endDate);
-            decimal turnover = orderService.GetTurnover(startDate, endDate);
-            int numberOfCustomers = orderService.GetNumberOfCustomers(startDate, endDate);
-
-            // Display the report
-            lblTotalSales.Text = $"{totalDrinksSold}";
-            lblTurnover.Text = $"€{turnover:F2}";
-            lblNumCustomers.Text = $"{numberOfCustomers}";
 
 
         }
@@ -348,7 +335,7 @@ namespace SomerenUI
         private void barManagmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bar_Managment bar_Managment = new Bar_Managment();
-            bar_Managment.ShowDialog();
+            bar_Managment.Show();
         }
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
@@ -417,12 +404,6 @@ namespace SomerenUI
             ShowOrderDrinksPanel();
         }
 
-        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Lecturer_Supervises lecturer_Supervises = new Lecturer_Supervises();
-            lecturer_Supervises.ShowDialog();
-        }
-        
         private void txtOrder_TextChanged_1(object sender, EventArgs e)
         {
             CalculateAmount();
