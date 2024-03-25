@@ -594,9 +594,9 @@
             lblResult.AutoSize = true;
             lblResult.Location = new System.Drawing.Point(808, 189);
             lblResult.Name = "lblResult";
-            lblResult.Size = new System.Drawing.Size(58, 20);
+            lblResult.Size = new System.Drawing.Size(66, 20);
             lblResult.TabIndex = 7;
-            lblResult.Text = "label11";
+            lblResult.Text = "lblResult";
             // 
             // lblPay
             // 
