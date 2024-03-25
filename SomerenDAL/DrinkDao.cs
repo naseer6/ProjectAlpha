@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Microsoft.Data.SqlClient;
 using SomerenModel;
 
@@ -77,6 +79,35 @@ namespace SomerenDAL
                 drinks.Add(drink);
             }
             return drinks;
+        }
+
+        public List<Drink> GetDrinksByDateRange(DateTime startDate, DateTime endDate)
+        {
+            string query = "SELECT d.Id, d.Name, d.Type, d.Price, d.Stock " +
+                           "FROM [Drink] d " +
+                           "INNER JOIN [Orders] o ON d.Id = o.Drink_ID " +
+                           "WHERE o.Date >= @StartDate AND o.Date <= @EndDate";
+
+            SqlParameter[] sqlParameters =
+            {
+        new SqlParameter("@StartDate", startDate),
+        new SqlParameter("@EndDate", endDate)
+    };
+
+            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
+            return ReadTables(dataTable);
+        }
+
+        public Drink GetDrinkById(int drinkId)
+        {
+            string query = "SELECT Id, Name, Type, Price, Stock FROM [Drink] WHERE Id = @Id";
+            SqlParameter[] sqlParameters =
+            {
+        new SqlParameter("@Id", drinkId)
+    };
+
+            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
+            return ReadTables(dataTable).FirstOrDefault();
         }
 
     }
