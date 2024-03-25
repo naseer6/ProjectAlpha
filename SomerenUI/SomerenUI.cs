@@ -26,6 +26,7 @@ namespace SomerenUI
             pnlTeachers.Hide();
             pnlActivities.Hide();
             pnlRevenue.Hide();
+            pnlRooms.Hide();
             // show dashboard
             pnlDashboard.Show();
         }
@@ -37,6 +38,7 @@ namespace SomerenUI
             pnlTeachers.Hide();
             pnlActivities.Hide();
             pnlRevenue.Hide();
+            pnlRooms.Hide();
 
             // show students
             pnlStudents.Show();
@@ -60,6 +62,7 @@ namespace SomerenUI
             pnlStudents.Hide();
             pnlActivities.Hide();
             pnlRevenue.Hide();
+            pnlRooms.Hide();
 
 
             // show teachers
@@ -84,6 +87,7 @@ namespace SomerenUI
             pnlStudents.Hide();
             pnlTeachers.Hide();
             pnlRevenue.Hide();
+            pnlRooms.Hide();
 
             // show activities
             pnlActivities.Show();
@@ -99,6 +103,33 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the activities: " + e.Message);
             }
         }
+
+
+        private void ShowRoomsPanel()
+        {
+            // hide all other panels
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlTeachers.Hide();
+            pnlRevenue.Hide();
+            pnlActivities.Hide();
+
+
+            // show Rooms
+            pnlRooms.Show();
+
+            try
+            {
+                // get and display all students
+                List<Room> rooms = GetRooms();
+                DisplayRooms(rooms);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
+            }
+        }
+
 
         private List<Student> GetStudents()
         {
@@ -118,6 +149,13 @@ namespace SomerenUI
             ActivityService activityService = new ActivityService();
             List<Activity> activities = activityService.GetActivities();
             return activities;
+        }
+
+        private List<Room> GetRooms()
+        {
+            RoomService roomService = new RoomService();
+            List<Room> rooms = roomService.GetRooms();
+            return rooms;
         }
 
         private void DisplayStudents(List<Student> students)
@@ -172,7 +210,30 @@ namespace SomerenUI
             pnlTeachers.Hide();
             pnlActivities.Hide();
             pnlRevenue.Show();
+            pnlRooms.Hide();
         }
+
+
+
+        private void DisplayRooms(List<Room> rooms)
+        {
+            // clear the listview before filling it
+            listViewRooms.Items.Clear();
+
+            foreach (Room room in rooms)
+            {
+                ListViewItem li = new ListViewItem(room.Id.ToString());
+                li.SubItems.Add(room.Number.ToString());
+                li.SubItems.Add(room.Capacity.ToString());
+                li.SubItems.Add(room.Type.ToString());
+                li.Tag = room;   // link room object to listview item
+                listViewRooms.Items.Add(li);
+            }
+        }
+
+       
+
+
 
         private void SomerenUI_Load(object sender, EventArgs e)
         {
@@ -226,6 +287,11 @@ namespace SomerenUI
 
 
 
+      
+
+
+
+
 
         private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -247,6 +313,12 @@ namespace SomerenUI
         {
             Bar_Managment bar_Managment = new Bar_Managment();
             bar_Managment.Show();
+        }
+
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowRoomsPanel();
+
         }
     }
 }
