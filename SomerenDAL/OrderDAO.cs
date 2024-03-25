@@ -40,18 +40,26 @@ namespace SomerenDAL
 
         public void InsertOrder(Order order)
         {
-            string query = "INSERT INTO [Orders] (Student_ID, Drink_ID, Date, Quantity) VALUES (@Student_ID, @Drink_ID, @Date, @Quantity)";
+            string orderQuery = "INSERT INTO [Orders] (Student_ID, Drink_ID, Date, Quantity) VALUES (@Student_ID, @Drink_ID, @Date, @Quantity)";
 
-            SqlParameter[] sqlParameters =
+            string drinkQuery = "UPDATE [Drink] SET Stock = Stock - @Quantity WHERE ID = @Drink_ID";
+
+            SqlParameter[] orderParameters =
             {
+        new SqlParameter("@Student_ID", order.Student_ID),
+        new SqlParameter("@Drink_ID", order.Drink_ID),
+        new SqlParameter("@Date", order.Date),
+        new SqlParameter("@Quantity", order.Quantity)
+    };
 
-                new SqlParameter("@Student_ID", order.Student_ID),
-                new SqlParameter("@Drink_ID", order.Drink_ID),
-                new SqlParameter("@Date", order.Date),
-                new SqlParameter("@Quantity", order.Quantity)
-            };
+            SqlParameter[] drinkParameters =
+            {
+        new SqlParameter("@Quantity", order.Quantity),
+        new SqlParameter("@Drink_ID", order.Drink_ID)
+    };
 
-            ExecuteEditQuery(query, sqlParameters);
+            ExecuteEditQuery(orderQuery, orderParameters);
+            ExecuteEditQuery(drinkQuery, drinkParameters);
         }
 
 
