@@ -66,7 +66,6 @@ namespace SomerenDAL
         private List<Drink> ReadTables(DataTable dataTable)
         {
             List<Drink> drinks = new List<Drink>();
-
             foreach (DataRow dr in dataTable.Rows)
             {
                 Drink drink = new Drink()
@@ -77,13 +76,10 @@ namespace SomerenDAL
                     Price = (decimal)dr["Price"],
                     Stock = (int)dr["Stock"]
                 };
-
                 drinks.Add(drink);
             }
-
             return drinks;
         }
-
 
         public List<Drink> GetDrinksByDateRange(DateTime startDate, DateTime endDate)
         {
@@ -111,10 +107,8 @@ namespace SomerenDAL
     };
 
             DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
-            return ReadTables(dataTable).FirstOrDefault(); 
+            return ReadTables(dataTable).FirstOrDefault();
         }
-
-
 
     }
 }

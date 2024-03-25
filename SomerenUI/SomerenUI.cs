@@ -14,15 +14,10 @@ namespace SomerenUI
     public partial class SomerenUI : Form
     {
 
-        private DrinkService drinkService = new DrinkService();
-        private OrderService orderService;
-
         public SomerenUI()
         {
             InitializeComponent();
-            orderService = new OrderService();
         }
-
 
         private void ShowDashboardPanel()
         {
@@ -31,9 +26,9 @@ namespace SomerenUI
             pnlTeachers.Hide();
             pnlActivities.Hide();
             pnlRevenue.Hide();
-            pnlOrder.Hide();
+            pnlRooms.Hide();
+            // show dashboard
             pnlDashboard.Show();
-
         }
         private void ShowStudentsPanel()
         {
@@ -43,7 +38,8 @@ namespace SomerenUI
             pnlTeachers.Hide();
             pnlActivities.Hide();
             pnlRevenue.Hide();
-            pnlOrder.Hide();
+            pnlRooms.Hide();
+
             // show students
             pnlStudents.Show();
 
@@ -66,7 +62,8 @@ namespace SomerenUI
             pnlStudents.Hide();
             pnlActivities.Hide();
             pnlRevenue.Hide();
-            pnlOrder.Hide();
+            pnlRooms.Hide();
+
 
             // show teachers
             pnlTeachers.Show();
@@ -90,7 +87,8 @@ namespace SomerenUI
             pnlStudents.Hide();
             pnlTeachers.Hide();
             pnlRevenue.Hide();
-            pnlOrder.Hide();
+            pnlRooms.Hide();
+
             // show activities
             pnlActivities.Show();
 
@@ -106,66 +104,32 @@ namespace SomerenUI
             }
         }
 
-        private List<Drink> GetDrinks()
-        {
 
-            List<Drink> drinks = drinkService.GetDrinks();
-            return drinks;
-        }
-
-        private void DisplayDrinks(List<Drink> drinks)
-        {
-            listViewDrinksOrder.Items.Clear();
-            foreach (Drink drink in drinks)
-            {
-                ListViewItem listViewItem = new ListViewItem(drink.Id.ToString());
-                listViewItem.SubItems.Add(drink.Name);
-                listViewItem.SubItems.Add(drink.Type);
-                listViewItem.SubItems.Add(drink.Price.ToString("F2"));
-                listViewItem.SubItems.Add(drink.Stock.ToString());
-                if (drink.Stock >= 10)
-                {
-                    listViewItem.SubItems.Add("Stock sufficient");
-                }
-                else if (drink.Stock == 0)
-                {
-                    listViewItem.SubItems.Add("No stock");
-                }
-                else
-                {
-                    listViewItem.SubItems.Add("Stock nearly depleted");
-                }
-
-                listViewDrinksOrder.Items.Add(listViewItem);
-            }
-        }
-
-        private void ShowOrderDrinksPanel()
+        private void ShowRoomsPanel()
         {
             // hide all other panels
-
             pnlDashboard.Hide();
-            pnlTeachers.Hide();
-            pnlActivities.Hide();
-            pnlRevenue.Hide();
             pnlStudents.Hide();
-            pnlOrder.Hide();
-            pnlOrder.Show();
+            pnlTeachers.Hide();
+            pnlRevenue.Hide();
+            pnlActivities.Hide();
+
+
+            // show Rooms
+            pnlRooms.Show();
 
             try
             {
                 // get and display all students
-                List<Student> students = GetStudents();
-                DisplayStudentsOrder(students);
+                List<Room> rooms = GetRooms();
+                DisplayRooms(rooms);
             }
             catch (Exception e)
             {
-                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
-
-            List<Drink> drinks = GetDrinks();
-            DisplayDrinks(drinks);
         }
+
 
         private List<Student> GetStudents()
         {
@@ -185,6 +149,13 @@ namespace SomerenUI
             ActivityService activityService = new ActivityService();
             List<Activity> activities = activityService.GetActivities();
             return activities;
+        }
+
+        private List<Room> GetRooms()
+        {
+            RoomService roomService = new RoomService();
+            List<Room> rooms = roomService.GetRooms();
+            return rooms;
         }
 
         private void DisplayStudents(List<Student> students)
@@ -217,22 +188,6 @@ namespace SomerenUI
             }
         }
 
-        private void DisplayStudentsOrder(List<Student> students)
-        {
-            // clear the listview before filling it
-            listViewStudentsOrder.Items.Clear();
-
-            foreach (Student student in students)
-            {
-                // Create a new ListViewItem and add student attributes to it
-                ListViewItem li = new ListViewItem(student.Id.ToString());
-                li.SubItems.Add(student.FirstName + " " + student.LastName);
-                li.SubItems.Add(student.Tel);
-                li.SubItems.Add(student.Class);
-                listViewStudentsOrder.Items.Add(li);
-            }
-        }
-
         private void DisplayActivities(List<Activity> activities)
         {
             // clear the listview before filling it
@@ -254,10 +209,31 @@ namespace SomerenUI
             pnlStudents.Hide();
             pnlTeachers.Hide();
             pnlActivities.Hide();
-            pnlOrder.Hide();
             pnlRevenue.Show();
-
+            pnlRooms.Hide();
         }
+
+
+
+        private void DisplayRooms(List<Room> rooms)
+        {
+            // clear the listview before filling it
+            listViewRooms.Items.Clear();
+
+            foreach (Room room in rooms)
+            {
+                ListViewItem li = new ListViewItem(room.Id.ToString());
+                li.SubItems.Add(room.Number.ToString());
+                li.SubItems.Add(room.Capacity.ToString());
+                li.SubItems.Add(room.Type.ToString());
+                li.Tag = room;   // link room object to listview item
+                listViewRooms.Items.Add(li);
+            }
+        }
+
+       
+
+
 
         private void SomerenUI_Load(object sender, EventArgs e)
         {
@@ -295,31 +271,24 @@ namespace SomerenUI
 
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             DateTime startDate = dtpStartDate.Value.Date;
             DateTime endDate = dtpEndDate.Value.Date;
 
-            // Check if the selected date range is valid
             if (endDate < startDate || endDate > DateTime.Today)
             {
                 MessageBox.Show("Please select a valid date period.");
                 return;
             }
 
-            // Generate the revenue report
-            int totalDrinksSold = orderService.GetTotalDrinksSold(startDate, endDate);
-            decimal turnover = orderService.GetTurnover(startDate, endDate);
-            int numberOfCustomers = orderService.GetNumberOfCustomers(startDate, endDate);
-
-            // Display the report
-            lblTotalSales.Text = $"{totalDrinksSold}";
-            lblTurnover.Text = $"€{turnover:F2}";
-            lblNumCustomers.Text = $"{numberOfCustomers}";
-
 
         }
+
+
+
+      
+
 
 
 
@@ -340,141 +309,16 @@ namespace SomerenUI
 
         }
 
-        private void toolStripMenuItemOrder_Click(object sender, EventArgs e)
-        {
-            ShowOrderDrinksPanel();
-        }
-
         private void barManagmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bar_Managment bar_Managment = new Bar_Managment();
-            bar_Managment.ShowDialog();
+            bar_Managment.Show();
         }
 
-        private void btnPlaceOrder_Click(object sender, EventArgs e)
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-               
-            }
+            ShowRoomsPanel();
 
-
-            private void CalculateAmount()
-        {
-
-            if (int.TryParse(txtOrder.Text, out int quantity) && quantity >= 0)
-            {
-                if (listViewDrinksOrder.SelectedItems.Count > 0 &&
-                    listViewDrinksOrder.SelectedItems[0].SubItems.Count > 0)
-                {
-                    if (decimal.TryParse(listViewDrinksOrder.SelectedItems[0].SubItems[3].Text, out decimal pricePerItem))
-                    {
-                        decimal amount = quantity * pricePerItem;
-                        lblResult.Text = amount.ToString("0.00");
-                    }
-                    else
-                    {
-                        lblResult.Text = "Invalid price per item";
-                    }
-
-                }
-                else
-                {
-                    lblResult.Text = "No item selected";
-                }
-            }
-            else
-            {
-                lblResult.Text = "Invalid quantity";
-            }
-        }
-
-        private void txtOrder_TextChanged(object sender, EventArgs e)
-        {
-            CalculateAmount();
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ShowOrderDrinksPanel();
-        }
-
-        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Lecturer_Supervises lecturer_Supervises = new Lecturer_Supervises();
-            lecturer_Supervises.ShowDialog();
-        }
-        
-        private void txtOrder_TextChanged_1(object sender, EventArgs e)
-        {
-            CalculateAmount();
-        }
-
-        private void btnPlaceOrder_Click_1(object sender, EventArgs e)
-        {
-            OrderService orderDAO = new OrderService();
-            if (listViewStudentsOrder.SelectedItems.Count == 1 && listViewDrinksOrder.SelectedItems.Count == 1)
-            {
-                Order order1 = new Order();
-
-                order1.Quantity = int.Parse(txtOrder.Text);
-                order1.Student_ID = int.Parse(listViewStudentsOrder.SelectedItems[0].SubItems[0].Text);
-                order1.Drink_ID = int.Parse(listViewDrinksOrder.SelectedItems[0].SubItems[0].Text);
-                order1.Date = DateTime.Now;
-                orderDAO.InsertOrder(order1);
-
-
-
-                MessageBox.Show("Order placed successfully!");
-
-                if (int.TryParse(txtOrder.Text, out int quantity) && quantity >= 0)
-                {
-                    if (listViewDrinksOrder.SelectedItems.Count > 0 &&
-                        listViewDrinksOrder.SelectedItems[0].SubItems.Count > 0)
-                    {
-                        // Retrieve the current stock quantity of the selected drink
-                        if (int.TryParse(listViewDrinksOrder.SelectedItems[0].SubItems[4].Text, out int stockQuantity))
-                        {
-                            if (stockQuantity >= quantity) // Check if there is enough stock
-                            {
-                                // Decrease the stock quantity by the ordered quantity
-                                stockQuantity -= quantity;
-
-                                // Update the stock quantity back to the ListView or data source
-                                listViewDrinksOrder.SelectedItems[0].SubItems[4].Text = stockQuantity.ToString();
-
-                                // Clear the quantity text box
-                                txtOrder.Text = string.Empty;
-                                lblResult.Text = string.Empty;
-
-                                // Refresh the screen or perform any other necessary actions
-
-                            }
-                            else
-                            {
-                                lblResult.Text = "Not enough stock";
-                            }
-                        }
-                        else
-                        {
-                            lblResult.Text = "Invalid stock quantity";
-                        }
-                    }
-                    else
-                    {
-                        lblResult.Text = "No item selected";
-                    }
-                }
-                else
-                {
-                    lblResult.Text = "Invalid quantity";
-                }
-
-            }
-
-            else
-            {
-                MessageBox.Show("Please select a student and a drink.");
-            }
         }
     }
 }
