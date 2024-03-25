@@ -10,10 +10,11 @@ namespace SomerenModel
     {
        
         public int Student_ID { get; set; }
+        public int Id { get; set; }
         public int Drink_ID { get; set; }
         public DateTime Date { get; set; }
 
         public int Quantity { get; set; }
-       
+        
     }
 }

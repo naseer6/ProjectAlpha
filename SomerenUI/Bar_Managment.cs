@@ -1,15 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SomerenModel;
 using SomerenService;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SomerenUI
 {
@@ -17,15 +11,18 @@ namespace SomerenUI
     {
         private List<Drink> drinks = null;
         private DrinkService drinkService = new DrinkService();
+
         public Bar_Managment()
         {
             InitializeComponent();
         }
+
         private List<Drink> GetDrinks()
         {
             List<Drink> drinks = drinkService.GetDrinks();
             return drinks;
         }
+
         private void DisplayDrinks(List<Drink> drinks)
         {
             listViewDrinks.Items.Clear();
@@ -49,10 +46,10 @@ namespace SomerenUI
                     listViewItem.SubItems.Add("Stock nearly depleted");
                 }
                 listViewItem.Tag = drink;
-
                 listViewDrinks.Items.Add(listViewItem);
             }
         }
+
         private void Bar_Managment_Load(object sender, EventArgs e)
         {
            
@@ -66,7 +63,6 @@ namespace SomerenUI
             {
                 Drink drink = (Drink)listViewDrinks.SelectedItems[0].Tag;
                 Edit_Drink edit_Drink = new Edit_Drink(drink);
-
                 if (edit_Drink.ShowDialog() == DialogResult.OK)
                 {
                     int index = drinks.FindIndex(d => d.Id == drink.Id);
@@ -76,7 +72,6 @@ namespace SomerenUI
                     }
                     DisplayDrinks(drinks);
                 }
-
             }
             else
             {
@@ -105,6 +100,7 @@ namespace SomerenUI
                 MessageBox.Show("Select one item", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void toolStripButtonDelete_Click(object sender, EventArgs e)
         {
             if (listViewDrinks.SelectedItems.Count == 1)
@@ -150,10 +146,6 @@ namespace SomerenUI
                         correspondingDrink.Stock != drink.Stock)
                     {
                         drinkService.UpdateDrink(drink);
-                    }
-                    else
-                    {
-                        continue;
                     }
                 }
                 else
