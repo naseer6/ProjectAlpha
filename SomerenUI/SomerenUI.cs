@@ -18,6 +18,7 @@ namespace SomerenUI
         {
             InitializeComponent();
         }
+        //checking
 
         private void ShowDashboardPanel()
         {
