@@ -353,31 +353,12 @@ namespace SomerenUI
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            OrderService orderDAO = new OrderService();
-            if (listViewStudentsOrder.SelectedItems.Count == 1 && listViewDrinksOrder.SelectedItems.Count == 1)
-            {
-                Order order1 = new Order();
-
-                order1.Quantity = int.Parse(txtOrder.Text);
-                order1.Student_ID = int.Parse(listViewStudentsOrder.SelectedItems[0].SubItems[0].Text);
-                order1.Drink_ID = int.Parse(listViewDrinksOrder.SelectedItems[0].SubItems[0].Text);
-                order1.Date = DateTime.Now;
-                orderDAO.InsertOrder(order1);
-
-
-
-                MessageBox.Show("Order placed successfully!");
-
+            
+               
             }
 
-            else
-            {
-                MessageBox.Show("Please select a student and a drink.");
-            }
 
-        }
-
-        private void CalculateAmount()
+            private void CalculateAmount()
         {
 
             if (int.TryParse(txtOrder.Text, out int quantity) && quantity >= 0)
@@ -444,6 +425,49 @@ namespace SomerenUI
 
 
                 MessageBox.Show("Order placed successfully!");
+
+                if (int.TryParse(txtOrder.Text, out int quantity) && quantity >= 0)
+                {
+                    if (listViewDrinksOrder.SelectedItems.Count > 0 &&
+                        listViewDrinksOrder.SelectedItems[0].SubItems.Count > 0)
+                    {
+                        // Retrieve the current stock quantity of the selected drink
+                        if (int.TryParse(listViewDrinksOrder.SelectedItems[0].SubItems[4].Text, out int stockQuantity))
+                        {
+                            if (stockQuantity >= quantity) // Check if there is enough stock
+                            {
+                                // Decrease the stock quantity by the ordered quantity
+                                stockQuantity -= quantity;
+
+                                // Update the stock quantity back to the ListView or data source
+                                listViewDrinksOrder.SelectedItems[0].SubItems[4].Text = stockQuantity.ToString();
+
+                                // Clear the quantity text box
+                                txtOrder.Text = string.Empty;
+                                lblResult.Text = string.Empty;
+
+                                // Refresh the screen or perform any other necessary actions
+
+                            }
+                            else
+                            {
+                                lblResult.Text = "Not enough stock";
+                            }
+                        }
+                        else
+                        {
+                            lblResult.Text = "Invalid stock quantity";
+                        }
+                    }
+                    else
+                    {
+                        lblResult.Text = "No item selected";
+                    }
+                }
+                else
+                {
+                    lblResult.Text = "Invalid quantity";
+                }
 
             }
 
