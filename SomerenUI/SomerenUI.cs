@@ -340,31 +340,12 @@ namespace SomerenUI
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            OrderService orderDAO = new OrderService();
-            if (listViewStudentsOrder.SelectedItems.Count == 1 && listViewDrinksOrder.SelectedItems.Count == 1)
-            {
-                Order order1 = new Order();
-
-                order1.Quantity = int.Parse(txtOrder.Text);
-                order1.Student_ID = int.Parse(listViewStudentsOrder.SelectedItems[0].SubItems[0].Text);
-                order1.Drink_ID = int.Parse(listViewDrinksOrder.SelectedItems[0].SubItems[0].Text);
-                order1.Date = DateTime.Now;
-                orderDAO.InsertOrder(order1);
-
-
-
-                MessageBox.Show("Order placed successfully!");
-
+            
+               
             }
 
-            else
-            {
-                MessageBox.Show("Please select a student and a drink.");
-            }
 
-        }
-
-        private void CalculateAmount()
+            private void CalculateAmount()
         {
 
             if (int.TryParse(txtOrder.Text, out int quantity) && quantity >= 0)

@@ -575,9 +575,8 @@
             lblResult.AutoSize = true;
             lblResult.Location = new System.Drawing.Point(707, 142);
             lblResult.Name = "lblResult";
-            lblResult.Size = new System.Drawing.Size(44, 15);
+            lblResult.Size = new System.Drawing.Size(0, 15);
             lblResult.TabIndex = 7;
-            lblResult.Text = "label11";
             // 
             // lblPay
             // 
@@ -704,13 +703,13 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(963, 497);
+            Controls.Add(menuStrip1);
+            Controls.Add(pnlOrder);
             Controls.Add(pnlRevenue);
             Controls.Add(pnlActivities);
-            Controls.Add(menuStrip1);
             Controls.Add(pnlStudents);
             Controls.Add(pnlDashboard);
             Controls.Add(pnlTeachers);
-            Controls.Add(pnlOrder);
             MainMenuStrip = menuStrip1;
             Name = "SomerenUI";
             Text = "SomerenApp";
