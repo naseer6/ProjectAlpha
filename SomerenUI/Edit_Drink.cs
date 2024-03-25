@@ -41,17 +41,9 @@ namespace SomerenUI
             {
                 _drink.Name = textBoxName.Text;
                 _drink.Type = comboBoxType.Text;
-                decimal price = decimal.Parse(textBoxPrice.Text);
-                if (price > 0)
-                {
-                    _drink.Price = price;
-                    DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("Invalid Value");
-                    DialogResult = DialogResult.No;
-                }
+                _drink.Price = decimal.Parse(textBoxPrice.Text);
+
+                DialogResult = DialogResult.OK;
             }
             catch(Exception ex)
             {
