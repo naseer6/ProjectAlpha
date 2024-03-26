@@ -21,8 +21,8 @@ namespace SomerenService
         {
             List<Order> orders = orderdb.GetOrdersByDateRange(startDate, endDate);
 
-            decimal alcoholicTurnover = 0;
-            decimal nonAlcoholicTurnover = 0;
+            decimal alcoholicVAT = 0;
+            decimal nonAlcoholicVAT = 0;
 
             var drinkdb = new DrinkDao();
 
@@ -33,16 +33,16 @@ namespace SomerenService
                 {
                     if (drink.Type == "alcoholic")
                     {
-                        alcoholicTurnover += order.Quantity * drink.Price * 0.21m;
+                        alcoholicVAT += order.Quantity * drink.Price * 0.21m;
                     }
                     else if (drink.Type == "non-alcoholic")
                     {
-                        nonAlcoholicTurnover += order.Quantity * drink.Price * 0.06m;
+                        nonAlcoholicVAT += order.Quantity * drink.Price * 0.06m;
                     }
                 }
             }
 
-            return (alcoholicTotal: alcoholicTurnover, nonAlcoholicTotal: nonAlcoholicTurnover);
+            return (alcoholicTotal: alcoholicVAT, nonAlcoholicTotal: nonAlcoholicVAT);
         }
     }
 }
