@@ -39,6 +39,7 @@
             roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             revenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             barManagmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            vATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             pnlDashboard = new System.Windows.Forms.Panel();
             lblDashboard = new System.Windows.Forms.Label();
             pnlStudents = new System.Windows.Forms.Panel();
@@ -87,6 +88,24 @@
             capacity = new System.Windows.Forms.ColumnHeader();
             room_type = new System.Windows.Forms.ColumnHeader();
             label19 = new System.Windows.Forms.Label();
+            pnlVAT = new System.Windows.Forms.Panel();
+            comboQ = new System.Windows.Forms.ComboBox();
+            comboYear = new System.Windows.Forms.ComboBox();
+            VATtot = new System.Windows.Forms.Label();
+            VAThigh = new System.Windows.Forms.Label();
+            VATlow = new System.Windows.Forms.Label();
+            endQ = new System.Windows.Forms.Label();
+            startQ = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
+            button2 = new System.Windows.Forms.Button();
+            pictureBox7 = new System.Windows.Forms.PictureBox();
+            label20 = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
             pnlDashboard.SuspendLayout();
             pnlStudents.SuspendLayout();
@@ -99,12 +118,14 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             pnlRooms.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            pnlVAT.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { dashboardToolStripMenuItem, studentsToolStripMenuItem, lecturersToolStripMenuItem, activitiesToolStripMenuItem, roomsToolStripMenuItem, revenueToolStripMenuItem, barManagmentToolStripMenuItem });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { dashboardToolStripMenuItem, studentsToolStripMenuItem, lecturersToolStripMenuItem, activitiesToolStripMenuItem, roomsToolStripMenuItem, revenueToolStripMenuItem, barManagmentToolStripMenuItem, vATToolStripMenuItem });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new System.Drawing.Size(962, 24);
@@ -173,6 +194,13 @@
             barManagmentToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             barManagmentToolStripMenuItem.Text = "Bar managment";
             barManagmentToolStripMenuItem.Click += barManagmentToolStripMenuItem_Click;
+            // 
+            // vATToolStripMenuItem
+            // 
+            vATToolStripMenuItem.Name = "vATToolStripMenuItem";
+            vATToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            vATToolStripMenuItem.Text = "VAT";
+            vATToolStripMenuItem.Click += vATToolStripMenuItem_Click;
             // 
             // pnlDashboard
             // 
@@ -575,11 +603,191 @@
             label19.TabIndex = 0;
             label19.Text = "Rooms";
             // 
+            // pnlVAT
+            // 
+            pnlVAT.Controls.Add(comboQ);
+            pnlVAT.Controls.Add(comboYear);
+            pnlVAT.Controls.Add(VATtot);
+            pnlVAT.Controls.Add(VAThigh);
+            pnlVAT.Controls.Add(VATlow);
+            pnlVAT.Controls.Add(endQ);
+            pnlVAT.Controls.Add(startQ);
+            pnlVAT.Controls.Add(label11);
+            pnlVAT.Controls.Add(label12);
+            pnlVAT.Controls.Add(label13);
+            pnlVAT.Controls.Add(label14);
+            pnlVAT.Controls.Add(label15);
+            pnlVAT.Controls.Add(label17);
+            pnlVAT.Controls.Add(label18);
+            pnlVAT.Controls.Add(button2);
+            pnlVAT.Controls.Add(pictureBox7);
+            pnlVAT.Controls.Add(label20);
+            pnlVAT.Location = new System.Drawing.Point(20, 38);
+            pnlVAT.Name = "pnlVAT";
+            pnlVAT.Size = new System.Drawing.Size(938, 436);
+            pnlVAT.TabIndex = 8;
+            // 
+            // comboQ
+            // 
+            comboQ.FormattingEnabled = true;
+            comboQ.Items.AddRange(new object[] { "Q1", "Q2", "Q3", "Q4" });
+            comboQ.Location = new System.Drawing.Point(291, 85);
+            comboQ.Name = "comboQ";
+            comboQ.Size = new System.Drawing.Size(121, 23);
+            comboQ.TabIndex = 22;
+            // 
+            // comboYear
+            // 
+            comboYear.FormattingEnabled = true;
+            comboYear.Location = new System.Drawing.Point(291, 48);
+            comboYear.Name = "comboYear";
+            comboYear.Size = new System.Drawing.Size(121, 23);
+            comboYear.TabIndex = 21;
+            // 
+            // VATtot
+            // 
+            VATtot.AutoSize = true;
+            VATtot.Location = new System.Drawing.Point(186, 311);
+            VATtot.Name = "VATtot";
+            VATtot.Size = new System.Drawing.Size(112, 15);
+            VATtot.TabIndex = 20;
+            VATtot.Text = "_____________________";
+            // 
+            // VAThigh
+            // 
+            VAThigh.AutoSize = true;
+            VAThigh.Location = new System.Drawing.Point(215, 268);
+            VAThigh.Name = "VAThigh";
+            VAThigh.Size = new System.Drawing.Size(112, 15);
+            VAThigh.TabIndex = 19;
+            VAThigh.Text = "_____________________";
+            // 
+            // VATlow
+            // 
+            VATlow.AutoSize = true;
+            VATlow.Location = new System.Drawing.Point(211, 229);
+            VATlow.Name = "VATlow";
+            VATlow.Size = new System.Drawing.Size(112, 15);
+            VATlow.TabIndex = 18;
+            VATlow.Text = "_____________________";
+            // 
+            // endQ
+            // 
+            endQ.AutoSize = true;
+            endQ.Location = new System.Drawing.Point(332, 193);
+            endQ.Name = "endQ";
+            endQ.Size = new System.Drawing.Size(112, 15);
+            endQ.TabIndex = 17;
+            endQ.Text = "_____________________";
+            // 
+            // startQ
+            // 
+            startQ.AutoSize = true;
+            startQ.Location = new System.Drawing.Point(160, 193);
+            startQ.Name = "startQ";
+            startQ.Size = new System.Drawing.Size(112, 15);
+            startQ.TabIndex = 16;
+            startQ.Text = "_____________________";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new System.Drawing.Point(34, 89);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(171, 15);
+            label11.TabIndex = 15;
+            label11.Text = "Select quarter (Q1, Q2, Q3, Q4):";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(34, 56);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(66, 15);
+            label12.TabIndex = 14;
+            label12.Text = "Select year:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(31, 268);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(178, 15);
+            label13.TabIndex = 13;
+            label13.Text = "VAT high (21%) amount payable:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(31, 193);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(105, 15);
+            label14.TabIndex = 12;
+            label14.Text = "Quarter runs from:";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new System.Drawing.Point(34, 229);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(171, 21);
+            label15.TabIndex = 11;
+            label15.Text = "VAT low (6%) amount payable:";
+            label15.UseCompatibleTextRendering = true;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new System.Drawing.Point(291, 193);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(21, 15);
+            label17.TabIndex = 5;
+            label17.Text = "to:";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(34, 311);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(146, 15);
+            label18.TabIndex = 4;
+            label18.Text = "Total VAT amount payable:";
+            // 
+            // button2
+            // 
+            button2.Location = new System.Drawing.Point(171, 141);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(174, 29);
+            button2.TabIndex = 3;
+            button2.Text = "Generate Report";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.Image = (System.Drawing.Image)resources.GetObject("pictureBox7.Image");
+            pictureBox7.Location = new System.Drawing.Point(805, 0);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new System.Drawing.Size(130, 123);
+            pictureBox7.TabIndex = 2;
+            pictureBox7.TabStop = false;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label20.Location = new System.Drawing.Point(13, 7);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(131, 32);
+            label20.TabIndex = 0;
+            label20.Text = "VAT Report";
+            // 
             // SomerenUI
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(962, 497);
+            Controls.Add(pnlVAT);
             Controls.Add(pnlRooms);
             Controls.Add(pnlRevenue);
             Controls.Add(pnlActivities);
@@ -610,6 +818,9 @@
             pnlRooms.ResumeLayout(false);
             pnlRooms.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            pnlVAT.ResumeLayout(false);
+            pnlVAT.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -675,5 +886,24 @@
         private System.Windows.Forms.ColumnHeader capacity;
         private System.Windows.Forms.ColumnHeader room_type;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ToolStripMenuItem vATToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlVAT;
+        private System.Windows.Forms.Label VATtot;
+        private System.Windows.Forms.Label VAThigh;
+        private System.Windows.Forms.Label VATlow;
+        private System.Windows.Forms.Label endQ;
+        private System.Windows.Forms.Label startQ;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox comboQ;
+        private System.Windows.Forms.ComboBox comboYear;
     }
 }
