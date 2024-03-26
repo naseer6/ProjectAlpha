@@ -27,6 +27,7 @@ namespace SomerenUI
             pnlActivities.Hide();
             pnlRevenue.Hide();
             pnlRooms.Hide();
+            pnlVAT.Hide();
             // show dashboard
             pnlDashboard.Show();
         }
@@ -39,6 +40,7 @@ namespace SomerenUI
             pnlActivities.Hide();
             pnlRevenue.Hide();
             pnlRooms.Hide();
+            pnlVAT.Hide();
 
             // show students
             pnlStudents.Show();
@@ -63,6 +65,7 @@ namespace SomerenUI
             pnlActivities.Hide();
             pnlRevenue.Hide();
             pnlRooms.Hide();
+            pnlVAT.Hide();
 
 
             // show teachers
@@ -88,6 +91,7 @@ namespace SomerenUI
             pnlTeachers.Hide();
             pnlRevenue.Hide();
             pnlRooms.Hide();
+            pnlVAT.Hide();
 
             // show activities
             pnlActivities.Show();
@@ -113,6 +117,7 @@ namespace SomerenUI
             pnlTeachers.Hide();
             pnlRevenue.Hide();
             pnlActivities.Hide();
+            pnlVAT.Hide();
 
 
             // show Rooms
@@ -203,18 +208,6 @@ namespace SomerenUI
             }
         }
 
-        private void ShowRevenuePanel()
-        {
-            pnlDashboard.Hide();
-            pnlStudents.Hide();
-            pnlTeachers.Hide();
-            pnlActivities.Hide();
-            pnlRevenue.Show();
-            pnlRooms.Hide();
-        }
-
-
-
         private void DisplayRooms(List<Room> rooms)
         {
             // clear the listview before filling it
@@ -231,7 +224,33 @@ namespace SomerenUI
             }
         }
 
-       
+        private void ShowRevenuePanel()
+        {
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlTeachers.Hide();
+            pnlActivities.Hide();
+            pnlRevenue.Show();
+            pnlRooms.Hide();
+        }
+
+        private void ShowVATPanel()
+        {
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlTeachers.Hide();
+            pnlActivities.Hide();
+            pnlRevenue.Hide();
+            pnlRooms.Hide();
+
+            pnlVAT.Show();
+        }
+
+
+
+
+
+
 
 
 
@@ -287,7 +306,7 @@ namespace SomerenUI
 
 
 
-      
+
 
 
 
@@ -319,6 +338,11 @@ namespace SomerenUI
         {
             ShowRoomsPanel();
 
+        }
+
+        private void vATToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowVATPanel();
         }
     }
 }

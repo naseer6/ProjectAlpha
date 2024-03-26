@@ -39,6 +39,7 @@
             roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             revenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             barManagmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            vATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             pnlDashboard = new System.Windows.Forms.Panel();
             lblDashboard = new System.Windows.Forms.Label();
             pnlStudents = new System.Windows.Forms.Panel();
@@ -66,6 +67,32 @@
             columnHeader4 = new System.Windows.Forms.ColumnHeader();
             label3 = new System.Windows.Forms.Label();
             pnlRevenue = new System.Windows.Forms.Panel();
+            pnlRooms = new System.Windows.Forms.Panel();
+            pnlVAT = new System.Windows.Forms.Panel();
+            label23 = new System.Windows.Forms.Label();
+            label22 = new System.Windows.Forms.Label();
+            label21 = new System.Windows.Forms.Label();
+            label16 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            label17 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
+            button2 = new System.Windows.Forms.Button();
+            pictureBox7 = new System.Windows.Forms.PictureBox();
+            label20 = new System.Windows.Forms.Label();
+            pictureBox6 = new System.Windows.Forms.PictureBox();
+            listViewRooms = new System.Windows.Forms.ListView();
+            room_id = new System.Windows.Forms.ColumnHeader();
+            Number = new System.Windows.Forms.ColumnHeader();
+            capacity = new System.Windows.Forms.ColumnHeader();
+            room_type = new System.Windows.Forms.ColumnHeader();
+            label19 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
@@ -79,14 +106,6 @@
             button1 = new System.Windows.Forms.Button();
             pictureBox4 = new System.Windows.Forms.PictureBox();
             label4 = new System.Windows.Forms.Label();
-            pnlRooms = new System.Windows.Forms.Panel();
-            pictureBox6 = new System.Windows.Forms.PictureBox();
-            listViewRooms = new System.Windows.Forms.ListView();
-            room_id = new System.Windows.Forms.ColumnHeader();
-            Number = new System.Windows.Forms.ColumnHeader();
-            capacity = new System.Windows.Forms.ColumnHeader();
-            room_type = new System.Windows.Forms.ColumnHeader();
-            label19 = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
             pnlDashboard.SuspendLayout();
             pnlStudents.SuspendLayout();
@@ -96,15 +115,17 @@
             pnlActivities.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             pnlRevenue.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             pnlRooms.SuspendLayout();
+            pnlVAT.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { dashboardToolStripMenuItem, studentsToolStripMenuItem, lecturersToolStripMenuItem, activitiesToolStripMenuItem, roomsToolStripMenuItem, revenueToolStripMenuItem, barManagmentToolStripMenuItem });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { dashboardToolStripMenuItem, studentsToolStripMenuItem, lecturersToolStripMenuItem, activitiesToolStripMenuItem, roomsToolStripMenuItem, revenueToolStripMenuItem, barManagmentToolStripMenuItem, vATToolStripMenuItem });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new System.Drawing.Size(962, 24);
@@ -173,6 +194,13 @@
             barManagmentToolStripMenuItem.Size = new System.Drawing.Size(104, 20);
             barManagmentToolStripMenuItem.Text = "Bar managment";
             barManagmentToolStripMenuItem.Click += barManagmentToolStripMenuItem_Click;
+            // 
+            // vATToolStripMenuItem
+            // 
+            vATToolStripMenuItem.Name = "vATToolStripMenuItem";
+            vATToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            vATToolStripMenuItem.Text = "VAT";
+            vATToolStripMenuItem.Click += vATToolStripMenuItem_Click;
             // 
             // pnlDashboard
             // 
@@ -377,6 +405,7 @@
             // 
             // pnlRevenue
             // 
+            pnlRevenue.Controls.Add(pnlRooms);
             pnlRevenue.Controls.Add(label9);
             pnlRevenue.Controls.Add(label8);
             pnlRevenue.Controls.Add(label7);
@@ -394,6 +423,243 @@
             pnlRevenue.Name = "pnlRevenue";
             pnlRevenue.Size = new System.Drawing.Size(938, 436);
             pnlRevenue.TabIndex = 6;
+            // 
+            // pnlRooms
+            // 
+            pnlRooms.Controls.Add(pnlVAT);
+            pnlRooms.Controls.Add(pictureBox6);
+            pnlRooms.Controls.Add(listViewRooms);
+            pnlRooms.Controls.Add(label19);
+            pnlRooms.Location = new System.Drawing.Point(3, 0);
+            pnlRooms.Name = "pnlRooms";
+            pnlRooms.Size = new System.Drawing.Size(938, 436);
+            pnlRooms.TabIndex = 7;
+            // 
+            // pnlVAT
+            // 
+            pnlVAT.Controls.Add(label23);
+            pnlVAT.Controls.Add(label22);
+            pnlVAT.Controls.Add(label21);
+            pnlVAT.Controls.Add(label16);
+            pnlVAT.Controls.Add(label10);
+            pnlVAT.Controls.Add(label11);
+            pnlVAT.Controls.Add(label12);
+            pnlVAT.Controls.Add(label13);
+            pnlVAT.Controls.Add(label14);
+            pnlVAT.Controls.Add(label15);
+            pnlVAT.Controls.Add(dateTimePicker1);
+            pnlVAT.Controls.Add(dateTimePicker2);
+            pnlVAT.Controls.Add(label17);
+            pnlVAT.Controls.Add(label18);
+            pnlVAT.Controls.Add(button2);
+            pnlVAT.Controls.Add(pictureBox7);
+            pnlVAT.Controls.Add(label20);
+            pnlVAT.Location = new System.Drawing.Point(10, 3);
+            pnlVAT.Name = "pnlVAT";
+            pnlVAT.Size = new System.Drawing.Size(938, 436);
+            pnlVAT.TabIndex = 7;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new System.Drawing.Point(186, 311);
+            label23.Name = "label23";
+            label23.Size = new System.Drawing.Size(112, 15);
+            label23.TabIndex = 20;
+            label23.Text = "_____________________";
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new System.Drawing.Point(215, 268);
+            label22.Name = "label22";
+            label22.Size = new System.Drawing.Size(112, 15);
+            label22.TabIndex = 19;
+            label22.Text = "_____________________";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new System.Drawing.Point(211, 229);
+            label21.Name = "label21";
+            label21.Size = new System.Drawing.Size(112, 15);
+            label21.TabIndex = 18;
+            label21.Text = "_____________________";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new System.Drawing.Point(332, 193);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(112, 15);
+            label16.TabIndex = 17;
+            label16.Text = "_____________________";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(160, 193);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(112, 15);
+            label10.TabIndex = 16;
+            label10.Text = "_____________________";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new System.Drawing.Point(34, 89);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(171, 15);
+            label11.TabIndex = 15;
+            label11.Text = "Select quarter (Q1, Q2, Q3, Q4):";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(34, 56);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(66, 15);
+            label12.TabIndex = 14;
+            label12.Text = "Select year:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new System.Drawing.Point(31, 268);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(178, 15);
+            label13.TabIndex = 13;
+            label13.Text = "VAT high (21%) amount payable:";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new System.Drawing.Point(31, 193);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(105, 15);
+            label14.TabIndex = 12;
+            label14.Text = "Quarter runs from:";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new System.Drawing.Point(34, 229);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(171, 21);
+            label15.TabIndex = 11;
+            label15.Text = "VAT low (6%) amount payable:";
+            label15.UseCompatibleTextRendering = true;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new System.Drawing.Point(270, 89);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            dateTimePicker1.TabIndex = 10;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new System.Drawing.Point(270, 48);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new System.Drawing.Size(200, 23);
+            dateTimePicker2.TabIndex = 9;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new System.Drawing.Point(291, 193);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(21, 15);
+            label17.TabIndex = 5;
+            label17.Text = "to:";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(34, 311);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(146, 15);
+            label18.TabIndex = 4;
+            label18.Text = "Total VAT amount payable:";
+            // 
+            // button2
+            // 
+            button2.Location = new System.Drawing.Point(171, 141);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(174, 29);
+            button2.TabIndex = 3;
+            button2.Text = "Generate Report";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.Image = (System.Drawing.Image)resources.GetObject("pictureBox7.Image");
+            pictureBox7.Location = new System.Drawing.Point(805, 0);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new System.Drawing.Size(130, 123);
+            pictureBox7.TabIndex = 2;
+            pictureBox7.TabStop = false;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label20.Location = new System.Drawing.Point(13, 7);
+            label20.Name = "label20";
+            label20.Size = new System.Drawing.Size(131, 32);
+            label20.TabIndex = 0;
+            label20.Text = "VAT Report";
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = (System.Drawing.Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new System.Drawing.Point(805, 0);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new System.Drawing.Size(130, 123);
+            pictureBox6.TabIndex = 2;
+            pictureBox6.TabStop = false;
+            // 
+            // listViewRooms
+            // 
+            listViewRooms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { room_id, Number, capacity, room_type });
+            listViewRooms.FullRowSelect = true;
+            listViewRooms.GridLines = true;
+            listViewRooms.Location = new System.Drawing.Point(13, 40);
+            listViewRooms.Name = "listViewRooms";
+            listViewRooms.Size = new System.Drawing.Size(766, 307);
+            listViewRooms.TabIndex = 1;
+            listViewRooms.UseCompatibleStateImageBehavior = false;
+            listViewRooms.View = System.Windows.Forms.View.Details;
+            // 
+            // room_id
+            // 
+            room_id.Text = "Id";
+            room_id.Width = 40;
+            // 
+            // Number
+            // 
+            Number.Text = "Room Number";
+            Number.Width = 150;
+            // 
+            // capacity
+            // 
+            capacity.Text = "Capacity";
+            capacity.Width = 150;
+            // 
+            // room_type
+            // 
+            room_type.Text = "Room Type";
+            room_type.Width = 150;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label19.Location = new System.Drawing.Point(13, 7);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(86, 32);
+            label19.TabIndex = 0;
+            label19.Text = "Rooms";
             // 
             // label9
             // 
@@ -514,73 +780,11 @@
             label4.Text = "Revenue Report";
             label4.Click += label4_Click;
             // 
-            // pnlRooms
-            // 
-            pnlRooms.Controls.Add(pictureBox6);
-            pnlRooms.Controls.Add(listViewRooms);
-            pnlRooms.Controls.Add(label19);
-            pnlRooms.Location = new System.Drawing.Point(12, 30);
-            pnlRooms.Name = "pnlRooms";
-            pnlRooms.Size = new System.Drawing.Size(938, 436);
-            pnlRooms.TabIndex = 7;
-            // 
-            // pictureBox6
-            // 
-            pictureBox6.Image = (System.Drawing.Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new System.Drawing.Point(805, 0);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new System.Drawing.Size(130, 123);
-            pictureBox6.TabIndex = 2;
-            pictureBox6.TabStop = false;
-            // 
-            // listViewRooms
-            // 
-            listViewRooms.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { room_id, Number, capacity, room_type });
-            listViewRooms.FullRowSelect = true;
-            listViewRooms.GridLines = true;
-            listViewRooms.Location = new System.Drawing.Point(13, 40);
-            listViewRooms.Name = "listViewRooms";
-            listViewRooms.Size = new System.Drawing.Size(766, 307);
-            listViewRooms.TabIndex = 1;
-            listViewRooms.UseCompatibleStateImageBehavior = false;
-            listViewRooms.View = System.Windows.Forms.View.Details;
-            // 
-            // room_id
-            // 
-            room_id.Text = "Id";
-            room_id.Width = 40;
-            // 
-            // Number
-            // 
-            Number.Text = "Room Number";
-            Number.Width = 150;
-            // 
-            // capacity
-            // 
-            capacity.Text = "Capacity";
-            capacity.Width = 150;
-            // 
-            // room_type
-            // 
-            room_type.Text = "Room Type";
-            room_type.Width = 150;
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label19.Location = new System.Drawing.Point(13, 7);
-            label19.Name = "label19";
-            label19.Size = new System.Drawing.Size(86, 32);
-            label19.TabIndex = 0;
-            label19.Text = "Rooms";
-            // 
             // SomerenUI
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(962, 497);
-            Controls.Add(pnlRooms);
             Controls.Add(pnlRevenue);
             Controls.Add(pnlActivities);
             Controls.Add(menuStrip1);
@@ -606,10 +810,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             pnlRevenue.ResumeLayout(false);
             pnlRevenue.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             pnlRooms.ResumeLayout(false);
             pnlRooms.PerformLayout();
+            pnlVAT.ResumeLayout(false);
+            pnlVAT.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -675,5 +882,24 @@
         private System.Windows.Forms.ColumnHeader capacity;
         private System.Windows.Forms.ColumnHeader room_type;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel pnlVAT;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripMenuItem vATToolStripMenuItem;
     }
 }
