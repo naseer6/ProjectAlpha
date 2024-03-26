@@ -631,7 +631,7 @@
             // 
             comboQ.FormattingEnabled = true;
             comboQ.Items.AddRange(new object[] { "Q1", "Q2", "Q3", "Q4" });
-            comboQ.Location = new System.Drawing.Point(291, 85);
+            comboQ.Location = new System.Drawing.Point(387, 87);
             comboQ.Name = "comboQ";
             comboQ.Size = new System.Drawing.Size(121, 23);
             comboQ.TabIndex = 22;
@@ -639,7 +639,8 @@
             // comboYear
             // 
             comboYear.FormattingEnabled = true;
-            comboYear.Location = new System.Drawing.Point(291, 48);
+            comboYear.Items.AddRange(new object[] { "", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040", "2041", "2042", "2043", "2044", "2045", "2046", "2047", "2048", "2049", "2050", "2051", "2052", "2053", "2054", "2055", "2056", "2057", "2058", "2059", "2060", "2061", "2062", "2063", "2064", "2065", "2066", "2067", "2068", "2069", "2070", "2071", "2072", "2073", "2074", "2075", "2076", "2077", "2078", "2079", "2080" });
+            comboYear.Location = new System.Drawing.Point(387, 50);
             comboYear.Name = "comboYear";
             comboYear.Size = new System.Drawing.Size(121, 23);
             comboYear.TabIndex = 21;
@@ -647,7 +648,7 @@
             // VATtot
             // 
             VATtot.AutoSize = true;
-            VATtot.Location = new System.Drawing.Point(186, 311);
+            VATtot.Location = new System.Drawing.Point(282, 313);
             VATtot.Name = "VATtot";
             VATtot.Size = new System.Drawing.Size(112, 15);
             VATtot.TabIndex = 20;
@@ -656,7 +657,7 @@
             // VAThigh
             // 
             VAThigh.AutoSize = true;
-            VAThigh.Location = new System.Drawing.Point(215, 268);
+            VAThigh.Location = new System.Drawing.Point(311, 270);
             VAThigh.Name = "VAThigh";
             VAThigh.Size = new System.Drawing.Size(112, 15);
             VAThigh.TabIndex = 19;
@@ -665,7 +666,7 @@
             // VATlow
             // 
             VATlow.AutoSize = true;
-            VATlow.Location = new System.Drawing.Point(211, 229);
+            VATlow.Location = new System.Drawing.Point(307, 231);
             VATlow.Name = "VATlow";
             VATlow.Size = new System.Drawing.Size(112, 15);
             VATlow.TabIndex = 18;
@@ -674,7 +675,7 @@
             // endQ
             // 
             endQ.AutoSize = true;
-            endQ.Location = new System.Drawing.Point(332, 193);
+            endQ.Location = new System.Drawing.Point(428, 195);
             endQ.Name = "endQ";
             endQ.Size = new System.Drawing.Size(112, 15);
             endQ.TabIndex = 17;
@@ -683,7 +684,7 @@
             // startQ
             // 
             startQ.AutoSize = true;
-            startQ.Location = new System.Drawing.Point(160, 193);
+            startQ.Location = new System.Drawing.Point(256, 195);
             startQ.Name = "startQ";
             startQ.Size = new System.Drawing.Size(112, 15);
             startQ.TabIndex = 16;
@@ -692,7 +693,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(34, 89);
+            label11.Location = new System.Drawing.Point(130, 91);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(171, 15);
             label11.TabIndex = 15;
@@ -701,7 +702,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new System.Drawing.Point(34, 56);
+            label12.Location = new System.Drawing.Point(130, 58);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(66, 15);
             label12.TabIndex = 14;
@@ -710,7 +711,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new System.Drawing.Point(31, 268);
+            label13.Location = new System.Drawing.Point(127, 270);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(178, 15);
             label13.TabIndex = 13;
@@ -719,7 +720,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new System.Drawing.Point(31, 193);
+            label14.Location = new System.Drawing.Point(127, 195);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(105, 15);
             label14.TabIndex = 12;
@@ -728,7 +729,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new System.Drawing.Point(34, 229);
+            label15.Location = new System.Drawing.Point(130, 231);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(171, 21);
             label15.TabIndex = 11;
@@ -738,7 +739,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new System.Drawing.Point(291, 193);
+            label17.Location = new System.Drawing.Point(387, 195);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(21, 15);
             label17.TabIndex = 5;
@@ -747,7 +748,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new System.Drawing.Point(34, 311);
+            label18.Location = new System.Drawing.Point(130, 313);
             label18.Name = "label18";
             label18.Size = new System.Drawing.Size(146, 15);
             label18.TabIndex = 4;
@@ -755,11 +756,11 @@
             // 
             // button2
             // 
-            button2.Location = new System.Drawing.Point(171, 141);
+            button2.Location = new System.Drawing.Point(267, 143);
             button2.Name = "button2";
             button2.Size = new System.Drawing.Size(174, 29);
             button2.TabIndex = 3;
-            button2.Text = "Generate Report";
+            button2.Text = "Generate VAT";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -776,7 +777,7 @@
             // 
             label20.AutoSize = true;
             label20.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label20.Location = new System.Drawing.Point(13, 7);
+            label20.Location = new System.Drawing.Point(109, 9);
             label20.Name = "label20";
             label20.Size = new System.Drawing.Size(131, 32);
             label20.TabIndex = 0;

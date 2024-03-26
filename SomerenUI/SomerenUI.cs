@@ -307,13 +307,59 @@ namespace SomerenUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
+            int year = Convert.ToInt32(comboYear.SelectedItem);
+            string quarter = comboQ.SelectedItem.ToString();
+
+            // Determine start and end dates of the selected quarter
+            DateTime startDate, endDate;
+            CalculateQuarterDates(year, quarter, out startDate, out endDate);
+            startQ.Text = startDate.ToString("dd-MM-yyyy");
+            endQ.Text = endDate.ToString("dd-MM-yyyy");
+
+            // Create an instance of SoldDrinks class
+            SoldDrinks soldDrinks = new SoldDrinks();
+
+            // Get the total turnover for alcoholic and non-alcoholic drinks
+            (decimal alcoholicTotal, decimal nonAlcoholicTotal) = soldDrinks.GetTotal(startDate, endDate);
+
+            // Calculate the total VAT by adding both alcoholic and non-alcoholic VAT amounts
+            decimal totalVAT = alcoholicTotal + nonAlcoholicTotal;
+
+            // Display VAT amounts
+            VATlow.Text = nonAlcoholicTotal.ToString("C");
+            VAThigh.Text = alcoholicTotal.ToString("C");
+            VATtot.Text = totalVAT.ToString("C");
+
         }
 
-        
+
+        private void CalculateQuarterDates(int year, string quarter, out DateTime startDate, out DateTime endDate)
+        {
 
 
-        
+            // Determine the start and end dates based on the selected quarter
+            int monthOffset = 0;
+
+            // Determine the month offset based on the selected quarter
+            if (quarter == "Q1")
+                monthOffset = 0;
+            else if (quarter == "Q2")
+                monthOffset = 3;
+            else if (quarter == "Q3")
+                monthOffset = 6;
+            else if (quarter == "Q4")
+                monthOffset = 9;
+            else
+                throw new ArgumentException("Invalid quarter specified.");
+
+            // Calculate start and end dates
+           startDate = new DateTime(year, monthOffset + 1, 1);
+            endDate = new DateTime(year, monthOffset + 3, DateTime.DaysInMonth(year, monthOffset + 3));
+        }
+
+
+
+
 
 
 
