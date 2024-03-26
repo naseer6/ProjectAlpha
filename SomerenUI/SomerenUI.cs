@@ -431,22 +431,22 @@ namespace SomerenUI
                     if (listViewDrinksOrder.SelectedItems.Count > 0 &&
                         listViewDrinksOrder.SelectedItems[0].SubItems.Count > 0)
                     {
-                        // Retrieve the current stock quantity of the selected drink
+                        
                         if (int.TryParse(listViewDrinksOrder.SelectedItems[0].SubItems[4].Text, out int stockQuantity))
                         {
-                            if (stockQuantity >= quantity) // Check if there is enough stock
+                            if (stockQuantity >= quantity) 
                             {
-                                // Decrease the stock quantity by the ordered quantity
+                                
                                 stockQuantity -= quantity;
 
-                                // Update the stock quantity back to the ListView or data source
+                                
                                 listViewDrinksOrder.SelectedItems[0].SubItems[4].Text = stockQuantity.ToString();
 
-                                // Clear the quantity text box
+                                
                                 txtOrder.Text = string.Empty;
                                 lblResult.Text = string.Empty;
 
-                                // Refresh the screen or perform any other necessary actions
+                                
 
                             }
                             else
