@@ -305,31 +305,37 @@ namespace SomerenUI
 
 
 
-        private void button2_Click(object sender, EventArgs e)
+    
+
+
+
+        private void UpdateLabels()
         {
-            int year = Convert.ToInt32(comboYear.SelectedItem);
-            string quarter = comboQ.SelectedItem.ToString();
+            if (comboYear.SelectedItem != null && comboQ.SelectedItem != null)
+            {
+                int year = Convert.ToInt32(comboYear.SelectedItem);
+                string quarter = comboQ.SelectedItem.ToString();
 
-            // Determine start and end dates of the selected quarter
-            DateTime startDate, endDate;
-            CalculateQuarterDates(year, quarter, out startDate, out endDate);
-            startQ.Text = startDate.ToString("dd-MM-yyyy");
-            endQ.Text = endDate.ToString("dd-MM-yyyy");
+                // Determine start and end dates of the selected quarter
+                DateTime startDate, endDate;
+                CalculateQuarterDates(year, quarter, out startDate, out endDate);
+                startQ.Text = startDate.ToString("dd-MM-yyyy");
+                endQ.Text = endDate.ToString("dd-MM-yyyy");
 
-            // Create an instance of SoldDrinks class
-            SoldDrinks soldDrinks = new SoldDrinks();
+                // Create an instance of SoldDrinks class
+                SoldDrinks soldDrinks = new SoldDrinks();
 
-            // Get the total turnover for alcoholic and non-alcoholic drinks
-            (decimal alcoholicTotal, decimal nonAlcoholicTotal) = soldDrinks.GetTotal(startDate, endDate);
+                // Get the total turnover for alcoholic and non-alcoholic drinks
+                (decimal alcoholicTotal, decimal nonAlcoholicTotal) = soldDrinks.GetTotal(startDate, endDate);
 
-            // Calculate the total VAT by adding both alcoholic and non-alcoholic VAT amounts
-            decimal totalVAT = alcoholicTotal + nonAlcoholicTotal;
+                // Calculate the total VAT by adding both alcoholic and non-alcoholic VAT amounts
+                decimal totalVAT = alcoholicTotal + nonAlcoholicTotal;
 
-            // Display VAT amounts
-            VATlow.Text = nonAlcoholicTotal.ToString("C");
-            VAThigh.Text = alcoholicTotal.ToString("C");
-            VATtot.Text = totalVAT.ToString("C");
-
+                // Display VAT amounts
+                VATlow.Text = nonAlcoholicTotal.ToString("C");
+                VAThigh.Text = alcoholicTotal.ToString("C");
+                VATtot.Text = totalVAT.ToString("C");
+            }
         }
 
 
@@ -353,7 +359,7 @@ namespace SomerenUI
                 throw new ArgumentException("Invalid quarter specified.");
 
             // Calculate start and end dates
-           startDate = new DateTime(year, monthOffset + 1, 1);
+            startDate = new DateTime(year, monthOffset + 1, 1);
             endDate = new DateTime(year, monthOffset + 3, DateTime.DaysInMonth(year, monthOffset + 3));
         }
 
@@ -398,5 +404,19 @@ namespace SomerenUI
         }
 
 
+
+
+
+
+        //COMBOS SELECTION FOR VAT
+        private void comboQ_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            UpdateLabels();
+        }
+
+        private void comboYear_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            UpdateLabels();
+        }
     }
 }

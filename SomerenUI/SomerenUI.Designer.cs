@@ -103,7 +103,6 @@
             label15 = new System.Windows.Forms.Label();
             label17 = new System.Windows.Forms.Label();
             label18 = new System.Windows.Forms.Label();
-            button2 = new System.Windows.Forms.Button();
             pictureBox7 = new System.Windows.Forms.PictureBox();
             label20 = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
@@ -619,7 +618,6 @@
             pnlVAT.Controls.Add(label15);
             pnlVAT.Controls.Add(label17);
             pnlVAT.Controls.Add(label18);
-            pnlVAT.Controls.Add(button2);
             pnlVAT.Controls.Add(pictureBox7);
             pnlVAT.Controls.Add(label20);
             pnlVAT.Location = new System.Drawing.Point(20, 38);
@@ -635,6 +633,7 @@
             comboQ.Name = "comboQ";
             comboQ.Size = new System.Drawing.Size(121, 23);
             comboQ.TabIndex = 22;
+            comboQ.SelectedIndexChanged += comboQ_SelectedIndexChanged_1;
             // 
             // comboYear
             // 
@@ -644,6 +643,7 @@
             comboYear.Name = "comboYear";
             comboYear.Size = new System.Drawing.Size(121, 23);
             comboYear.TabIndex = 21;
+            comboYear.SelectedIndexChanged += comboYear_SelectedIndexChanged_1;
             // 
             // VATtot
             // 
@@ -753,16 +753,6 @@
             label18.Size = new System.Drawing.Size(146, 15);
             label18.TabIndex = 4;
             label18.Text = "Total VAT amount payable:";
-            // 
-            // button2
-            // 
-            button2.Location = new System.Drawing.Point(267, 143);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(174, 29);
-            button2.TabIndex = 3;
-            button2.Text = "Generate VAT";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
             // 
             // pictureBox7
             // 
@@ -901,7 +891,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox comboQ;
