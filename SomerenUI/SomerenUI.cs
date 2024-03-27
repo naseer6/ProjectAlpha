@@ -316,7 +316,7 @@ namespace SomerenUI
 
 
             lblTotalSales.Text = $"{totalDrinksSold}";
-            lblTurnover.Text = $"€{turnover:F2}";
+            lblTurnover.Text = $"Â€{turnover:F2}";
             lblNumCustomers.Text = $"{numberOfCustomers}";
 
 
@@ -433,19 +433,22 @@ namespace SomerenUI
                         listViewDrinksOrder.SelectedItems[0].SubItems.Count > 0)
                     {
 
+                        
                         if (int.TryParse(listViewDrinksOrder.SelectedItems[0].SubItems[4].Text, out int stockQuantity))
                         {
-                            if (stockQuantity >= quantity)
+                            if (stockQuantity >= quantity) 
                             {
-
+                                
                                 stockQuantity -= quantity;
 
-
+                                
                                 listViewDrinksOrder.SelectedItems[0].SubItems[4].Text = stockQuantity.ToString();
 
+                                
                                 txtOrder.Text = string.Empty;
                                 lblResult.Text = string.Empty;
 
+                                
 
 
                             }
