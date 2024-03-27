@@ -302,21 +302,21 @@ namespace SomerenUI
             DateTime startDate = dtpStartDate.Value.Date;
             DateTime endDate = dtpEndDate.Value.Date;
 
-            // Check if the selected date range is valid
+
             if (endDate < startDate || endDate > DateTime.Today)
             {
                 MessageBox.Show("Please select a valid date period.");
                 return;
             }
 
-            // Generate the revenue report
+
             int totalDrinksSold = orderService.GetTotalDrinksSold(startDate, endDate);
             decimal turnover = orderService.GetTurnover(startDate, endDate);
             int numberOfCustomers = orderService.GetNumberOfCustomers(startDate, endDate);
 
-            // Display the report
+
             lblTotalSales.Text = $"{totalDrinksSold}";
-            lblTurnover.Text = $"€{turnover:F2}";
+            lblTurnover.Text = $"Â€{turnover:F2}";
             lblNumCustomers.Text = $"{numberOfCustomers}";
 
 
@@ -354,12 +354,12 @@ namespace SomerenUI
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            
-               
-            }
 
 
-            private void CalculateAmount()
+        }
+
+
+        private void CalculateAmount()
         {
 
             if (int.TryParse(txtOrder.Text, out int quantity) && quantity >= 0)
@@ -404,7 +404,7 @@ namespace SomerenUI
             Lecturer_Supervises lecturer_Supervises = new Lecturer_Supervises();
             lecturer_Supervises.ShowDialog();
         }
-        
+
         private void txtOrder_TextChanged_1(object sender, EventArgs e)
         {
             CalculateAmount();
@@ -432,6 +432,7 @@ namespace SomerenUI
                     if (listViewDrinksOrder.SelectedItems.Count > 0 &&
                         listViewDrinksOrder.SelectedItems[0].SubItems.Count > 0)
                     {
+
                         
                         if (int.TryParse(listViewDrinksOrder.SelectedItems[0].SubItems[4].Text, out int stockQuantity))
                         {
@@ -448,6 +449,7 @@ namespace SomerenUI
                                 lblResult.Text = string.Empty;
 
                                 
+
 
                             }
                             else
@@ -476,6 +478,29 @@ namespace SomerenUI
             {
                 MessageBox.Show("Please select a student and a drink.");
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddNewStudent addNewStudent = new AddNewStudent();
+            addNewStudent.ShowDialog();
+
+        }
+
+        private void updateStudent_Click(object sender, EventArgs e)
+        {
+            UpdateStudent updateStudent = new UpdateStudent();
+            updateStudent.ShowDialog();
+        }
+
+        private void deleteStudent_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show($"Are you sure you wish to delete?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
+
+        private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
