@@ -254,7 +254,7 @@
             deleteStudent.TabIndex = 5;
             deleteStudent.Text = "Delete";
             deleteStudent.UseVisualStyleBackColor = true;
-            deleteStudent.Click += deleteStudent_Click;
+           
             // 
             // updateStudent
             // 
@@ -265,7 +265,7 @@
             updateStudent.TabIndex = 4;
             updateStudent.Text = "Update";
             updateStudent.UseVisualStyleBackColor = true;
-            updateStudent.Click += updateStudent_Click;
+            
             // 
             // addStudent
             // 
@@ -276,7 +276,7 @@
             addStudent.TabIndex = 3;
             addStudent.Text = "Add";
             addStudent.UseVisualStyleBackColor = true;
-            addStudent.Click += button2_Click;
+            
             // 
             // pictureBox1
             // 
@@ -303,7 +303,7 @@
             listViewStudents.TabIndex = 1;
             listViewStudents.UseCompatibleStateImageBehavior = false;
             listViewStudents.View = System.Windows.Forms.View.Details;
-            listViewStudents.SelectedIndexChanged += listViewStudents_SelectedIndexChanged;
+            
             // 
             // StudentID
             // 
@@ -584,7 +584,7 @@
             button1.TabIndex = 3;
             button1.Text = "Generate Report";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+           
             // 
             // pictureBox4
             // 

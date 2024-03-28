@@ -295,34 +295,7 @@ namespace SomerenUI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DateTime startDate = dtpStartDate.Value.Date;
-            DateTime endDate = dtpEndDate.Value.Date;
 
-
-
-
-            if (endDate < startDate || endDate > DateTime.Today)
-            {
-                MessageBox.Show("Please select a valid date period.");
-                return;
-            }
-
-
-
-            int totalDrinksSold = orderService.GetTotalDrinksSold(startDate, endDate);
-            decimal turnover = orderService.GetTurnover(startDate, endDate);
-            int numberOfCustomers = orderService.GetNumberOfCustomers(startDate, endDate);
-
-
-            lblTotalSales.Text = $"{totalDrinksSold}";
-            lblTurnover.Text = $"{turnover:F2}";
-            lblNumCustomers.Text = $"{numberOfCustomers}";
-
-
-
-        }
 
 
 
@@ -362,7 +335,7 @@ namespace SomerenUI
 
         }
 
-        
+
 
 
 
@@ -443,22 +416,22 @@ namespace SomerenUI
                         listViewDrinksOrder.SelectedItems[0].SubItems.Count > 0)
                     {
 
-                        
+
                         if (int.TryParse(listViewDrinksOrder.SelectedItems[0].SubItems[4].Text, out int stockQuantity))
                         {
-                            if (stockQuantity >= quantity) 
+                            if (stockQuantity >= quantity)
                             {
-                                
+
                                 stockQuantity -= quantity;
 
-                                
+
                                 listViewDrinksOrder.SelectedItems[0].SubItems[4].Text = stockQuantity.ToString();
 
-                                
+
                                 txtOrder.Text = string.Empty;
                                 lblResult.Text = string.Empty;
 
-                                
+
 
 
                             }
@@ -500,27 +473,6 @@ namespace SomerenUI
         {
             Lecturer_Managment lecturer_Managment = new Lecturer_Managment();
             lecturer_Managment.Show();
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AddNewStudent addNewStudent = new AddNewStudent();
-            addNewStudent.ShowDialog();
-
-        }
-
-        private void updateStudent_Click(object sender, EventArgs e)
-        {
-            UpdateStudent updateStudent = new UpdateStudent();
-            updateStudent.ShowDialog();
-        }
-
-        private void deleteStudent_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show($"Are you sure you wish to delete?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        }
-
-        private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
 
         }
