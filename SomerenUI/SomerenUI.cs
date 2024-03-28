@@ -341,9 +341,9 @@ namespace SomerenUI
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            
-               
-            }
+
+
+        }
 
 
 
@@ -460,6 +460,17 @@ namespace SomerenUI
             {
                 MessageBox.Show("Please select a student and a drink.");
             }
+        }
+
+        private void pnlOrder_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lecturersManagmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lecturer_Managment lecturer_Managment = new Lecturer_Managment();
+            lecturer_Managment.Show();
         }
     }
 }

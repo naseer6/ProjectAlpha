@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SomerenModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,21 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SomerenModel;
+using static System.Windows.Forms.LinkLabel;
 
 namespace SomerenUI
 {
-    public partial class Add_Drink : Form
+    public partial class Add_Teacher : Form
     {
-        private Drink drink = null;
-        public Add_Drink(Drink drink)
+        private Teacher teacher = null;
+        public Add_Teacher(Teacher teacher)
         {
             InitializeComponent();
-            this.drink = drink;
+            this.teacher = teacher;
         }
 
-        private void Add_Drink_Load(object sender, EventArgs e)
+        private void Add_Teacher_Load(object sender, EventArgs e)
         {
+           
 
         }
 
@@ -29,12 +31,13 @@ namespace SomerenUI
         {
             try
             {
-                drink.Name = textBoxName.Text;
-                drink.Type = comboBoxType.Text;
-                decimal price = decimal.Parse(textBoxPrice.Text);
-                if (price > 0)
+                teacher.FirstName = textBoxFirstName.Text;
+                teacher.LastName = textBoxLastName.Text; ;
+                int telephoneNumber = int.Parse(textBoxTelNumber.Text);
+                int age = int.Parse(textBoxAge.Text);
+                if (age > 0)
                 {
-                    drink.Price = price;
+                    teacher.Age = age;
                     DialogResult = DialogResult.OK;
                 }
                 else
@@ -47,11 +50,6 @@ namespace SomerenUI
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void textBoxName_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

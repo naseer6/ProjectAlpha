@@ -42,9 +42,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Location = new System.Drawing.Point(14, 12);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(94, 25);
+            label1.Size = new System.Drawing.Size(118, 32);
             label1.TabIndex = 0;
             label1.Text = "Add drink";
             // 
@@ -52,9 +52,9 @@
             // 
             labelName.AutoSize = true;
             labelName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            labelName.Location = new System.Drawing.Point(11, 62);
+            labelName.Location = new System.Drawing.Point(13, 83);
             labelName.Name = "labelName";
-            labelName.Size = new System.Drawing.Size(52, 21);
+            labelName.Size = new System.Drawing.Size(64, 28);
             labelName.TabIndex = 1;
             labelName.Text = "Name";
             // 
@@ -62,9 +62,9 @@
             // 
             labeltype.AutoSize = true;
             labeltype.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            labeltype.Location = new System.Drawing.Point(11, 99);
+            labeltype.Location = new System.Drawing.Point(13, 132);
             labeltype.Name = "labeltype";
-            labeltype.Size = new System.Drawing.Size(42, 21);
+            labeltype.Size = new System.Drawing.Size(53, 28);
             labeltype.TabIndex = 2;
             labeltype.Text = "Type";
             // 
@@ -72,26 +72,29 @@
             // 
             labelPrice.AutoSize = true;
             labelPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            labelPrice.Location = new System.Drawing.Point(11, 136);
+            labelPrice.Location = new System.Drawing.Point(13, 181);
             labelPrice.Name = "labelPrice";
-            labelPrice.Size = new System.Drawing.Size(44, 21);
+            labelPrice.Size = new System.Drawing.Size(54, 28);
             labelPrice.TabIndex = 3;
             labelPrice.Text = "Price";
             // 
             // textBoxName
             // 
             textBoxName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBoxName.Location = new System.Drawing.Point(69, 59);
+            textBoxName.Location = new System.Drawing.Point(79, 79);
+            textBoxName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new System.Drawing.Size(121, 29);
+            textBoxName.Size = new System.Drawing.Size(138, 34);
             textBoxName.TabIndex = 4;
+            textBoxName.TextChanged += textBoxName_TextChanged;
             // 
             // textBoxPrice
             // 
             textBoxPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            textBoxPrice.Location = new System.Drawing.Point(69, 133);
+            textBoxPrice.Location = new System.Drawing.Point(79, 177);
+            textBoxPrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             textBoxPrice.Name = "textBoxPrice";
-            textBoxPrice.Size = new System.Drawing.Size(121, 29);
+            textBoxPrice.Size = new System.Drawing.Size(138, 34);
             textBoxPrice.TabIndex = 5;
             // 
             // comboBoxType
@@ -99,16 +102,18 @@
             comboBoxType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             comboBoxType.FormattingEnabled = true;
             comboBoxType.Items.AddRange(new object[] { "alcoholic", "non-alcoholic" });
-            comboBoxType.Location = new System.Drawing.Point(69, 98);
+            comboBoxType.Location = new System.Drawing.Point(79, 131);
+            comboBoxType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             comboBoxType.Name = "comboBoxType";
-            comboBoxType.Size = new System.Drawing.Size(121, 29);
+            comboBoxType.Size = new System.Drawing.Size(138, 36);
             comboBoxType.TabIndex = 6;
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new System.Drawing.Point(115, 188);
+            buttonAdd.Location = new System.Drawing.Point(131, 251);
+            buttonAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new System.Drawing.Size(75, 23);
+            buttonAdd.Size = new System.Drawing.Size(86, 31);
             buttonAdd.TabIndex = 7;
             buttonAdd.Text = "Add";
             buttonAdd.UseVisualStyleBackColor = true;
@@ -116,9 +121,9 @@
             // 
             // Add_Drink
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(235, 249);
+            ClientSize = new System.Drawing.Size(269, 332);
             Controls.Add(buttonAdd);
             Controls.Add(comboBoxType);
             Controls.Add(textBoxPrice);
@@ -127,6 +132,7 @@
             Controls.Add(labeltype);
             Controls.Add(labelName);
             Controls.Add(label1);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "Add_Drink";
             Text = "Add_Drink";
             Load += Add_Drink_Load;
