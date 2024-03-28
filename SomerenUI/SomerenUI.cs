@@ -15,12 +15,11 @@ namespace SomerenUI
     {
 
         private DrinkService drinkService = new DrinkService();
-        private OrderService orderService;
 
         public SomerenUI()
         {
             InitializeComponent();
-            orderService = new OrderService();
+
         }
         //checking
 
@@ -296,11 +295,12 @@ namespace SomerenUI
 
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             DateTime startDate = dtpStartDate.Value.Date;
             DateTime endDate = dtpEndDate.Value.Date;
+
+
 
 
             if (endDate < startDate || endDate > DateTime.Today)
@@ -308,6 +308,7 @@ namespace SomerenUI
                 MessageBox.Show("Please select a valid date period.");
                 return;
             }
+
 
 
             int totalDrinksSold = orderService.GetTotalDrinksSold(startDate, endDate);
@@ -318,6 +319,7 @@ namespace SomerenUI
             lblTotalSales.Text = $"{totalDrinksSold}";
             lblTurnover.Text = $"{turnover:F2}";
             lblNumCustomers.Text = $"{numberOfCustomers}";
+
 
 
         }
@@ -349,8 +351,10 @@ namespace SomerenUI
         private void barManagmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bar_Managment bar_Managment = new Bar_Managment();
-            bar_Managment.ShowDialog();
+            bar_Managment.Show();
         }
+
+
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
@@ -358,8 +362,12 @@ namespace SomerenUI
 
         }
 
+        
+
+
 
         private void CalculateAmount()
+
         {
 
             if (int.TryParse(txtOrder.Text, out int quantity) && quantity >= 0)
@@ -399,11 +407,13 @@ namespace SomerenUI
             ShowOrderDrinksPanel();
         }
 
+
         private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Lecturer_Supervises lecturer_Supervises = new Lecturer_Supervises();
             lecturer_Supervises.ShowDialog();
         }
+
 
         private void txtOrder_TextChanged_1(object sender, EventArgs e)
         {
@@ -480,6 +490,17 @@ namespace SomerenUI
             }
         }
 
+
+        private void pnlOrder_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lecturersManagmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lecturer_Managment lecturer_Managment = new Lecturer_Managment();
+            lecturer_Managment.Show();
+
         private void button2_Click(object sender, EventArgs e)
         {
             AddNewStudent addNewStudent = new AddNewStudent();
@@ -500,6 +521,7 @@ namespace SomerenUI
 
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
+
 
         }
     }
