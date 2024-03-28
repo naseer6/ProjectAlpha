@@ -297,6 +297,7 @@ namespace SomerenUI
         }
 
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             DateTime startDate = dtpStartDate.Value.Date;
@@ -321,6 +322,7 @@ namespace SomerenUI
 
 
         }
+
 
 
 
@@ -357,6 +359,7 @@ namespace SomerenUI
 
 
         }
+
 
 
         private void CalculateAmount()
@@ -433,22 +436,22 @@ namespace SomerenUI
                         listViewDrinksOrder.SelectedItems[0].SubItems.Count > 0)
                     {
 
-                        
+
                         if (int.TryParse(listViewDrinksOrder.SelectedItems[0].SubItems[4].Text, out int stockQuantity))
                         {
-                            if (stockQuantity >= quantity) 
+                            if (stockQuantity >= quantity)
                             {
-                                
+
                                 stockQuantity -= quantity;
 
-                                
+
                                 listViewDrinksOrder.SelectedItems[0].SubItems[4].Text = stockQuantity.ToString();
 
-                                
+
                                 txtOrder.Text = string.Empty;
                                 lblResult.Text = string.Empty;
 
-                                
+
 
 
                             }
@@ -480,6 +483,8 @@ namespace SomerenUI
             }
         }
 
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             AddNewStudent addNewStudent = new AddNewStudent();
@@ -500,6 +505,7 @@ namespace SomerenUI
 
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
+
 
         }
     }
