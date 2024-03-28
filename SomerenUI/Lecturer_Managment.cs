@@ -60,6 +60,7 @@ namespace SomerenUI
                 li.SubItems.Add(teacher.FirstName + " " + teacher.LastName);
                 li.SubItems.Add(teacher.TelephoneNumber.ToString());
                 li.SubItems.Add(teacher.Age.ToString());
+                li.Tag = teacher;
                 listViewTeachers_.Items.Add(li);
             }
         }
@@ -69,7 +70,7 @@ namespace SomerenUI
             try
             {
                 // get and display all teachers
-                List<Teacher> teachers = GetTeachers();
+                teachers = GetTeachers();
                 DisplayLecturers(teachers);
             }
             catch (Exception ex)

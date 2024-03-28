@@ -32,7 +32,7 @@ namespace SomerenUI
             try
             {
                 teacher.FirstName = textBoxFirstName.Text;
-                teacher.LastName = textBoxLastName.Text; ;
+                teacher.LastName = textBoxLastName.Text;
                 int telephoneNumber = int.Parse(textBoxTelNumber.Text);
                 int age = int.Parse(textBoxAge.Text);
                 if (age > 0)
