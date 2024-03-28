@@ -338,6 +338,7 @@ namespace SomerenUI
             bar_Managment.Show();
         }
 
+
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             
@@ -345,7 +346,10 @@ namespace SomerenUI
             }
 
 
-            private void CalculateAmount()
+
+
+        private void CalculateAmount()
+
         {
 
             if (int.TryParse(txtOrder.Text, out int quantity) && quantity >= 0)
