@@ -21,6 +21,7 @@ namespace SomerenUI
             InitializeComponent();
 
         }
+        //checking
 
 
         private void ShowDashboardPanel()
@@ -299,11 +300,26 @@ namespace SomerenUI
             DateTime startDate = dtpStartDate.Value.Date;
             DateTime endDate = dtpEndDate.Value.Date;
 
+
+
+
             if (endDate < startDate || endDate > DateTime.Today)
             {
                 MessageBox.Show("Please select a valid date period.");
                 return;
             }
+
+
+
+            int totalDrinksSold = orderService.GetTotalDrinksSold(startDate, endDate);
+            decimal turnover = orderService.GetTurnover(startDate, endDate);
+            int numberOfCustomers = orderService.GetNumberOfCustomers(startDate, endDate);
+
+
+            lblTotalSales.Text = $"{totalDrinksSold}";
+            lblTurnover.Text = $"{turnover:F2}";
+            lblNumCustomers.Text = $"{numberOfCustomers}";
+
 
 
         }
@@ -338,17 +354,15 @@ namespace SomerenUI
             bar_Managment.Show();
         }
 
-<<<<<<< Updated upstream
+
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
 
 
         }
-=======
-        
->>>>>>> Stashed changes
 
+        
 
 
 
@@ -393,6 +407,14 @@ namespace SomerenUI
             ShowOrderDrinksPanel();
         }
 
+
+        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lecturer_Supervises lecturer_Supervises = new Lecturer_Supervises();
+            lecturer_Supervises.ShowDialog();
+        }
+
+
         private void txtOrder_TextChanged_1(object sender, EventArgs e)
         {
             CalculateAmount();
@@ -420,22 +442,24 @@ namespace SomerenUI
                     if (listViewDrinksOrder.SelectedItems.Count > 0 &&
                         listViewDrinksOrder.SelectedItems[0].SubItems.Count > 0)
                     {
-                        // Retrieve the current stock quantity of the selected drink
+
+                        
                         if (int.TryParse(listViewDrinksOrder.SelectedItems[0].SubItems[4].Text, out int stockQuantity))
                         {
-                            if (stockQuantity >= quantity) // Check if there is enough stock
+                            if (stockQuantity >= quantity) 
                             {
-                                // Decrease the stock quantity by the ordered quantity
+                                
                                 stockQuantity -= quantity;
 
-                                // Update the stock quantity back to the ListView or data source
+                                
                                 listViewDrinksOrder.SelectedItems[0].SubItems[4].Text = stockQuantity.ToString();
 
-                                // Clear the quantity text box
+                                
                                 txtOrder.Text = string.Empty;
                                 lblResult.Text = string.Empty;
 
-                                // Refresh the screen or perform any other necessary actions
+                                
+
 
                             }
                             else
@@ -466,6 +490,7 @@ namespace SomerenUI
             }
         }
 
+
         private void pnlOrder_Paint(object sender, PaintEventArgs e)
         {
 
@@ -475,6 +500,29 @@ namespace SomerenUI
         {
             Lecturer_Managment lecturer_Managment = new Lecturer_Managment();
             lecturer_Managment.Show();
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddNewStudent addNewStudent = new AddNewStudent();
+            addNewStudent.ShowDialog();
+
+        }
+
+        private void updateStudent_Click(object sender, EventArgs e)
+        {
+            UpdateStudent updateStudent = new UpdateStudent();
+            updateStudent.ShowDialog();
+        }
+
+        private void deleteStudent_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show($"Are you sure you wish to delete?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+        }
+
+        private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
         }
     }
 }
