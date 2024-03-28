@@ -14,7 +14,7 @@ namespace SomerenDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        
+
 
         private List<Student> ReadTables(DataTable dataTable)
         {
@@ -29,10 +29,46 @@ namespace SomerenDAL
                     LastName = dr["LastName"].ToString(),
                     Tel = dr["Tel"].ToString(),
                     Class = dr["Class"].ToString()
-,                };
+,
+                };
                 students.Add(student);
             }
             return students;
+        }
+
+        public void AddStudent(Student student)
+        {
+            string query = "INSERT INTO Students (FirstName, LastName, Tel, Class) VALUES (@FirstName, @LastName, @Tel, @Class)";
+            SqlParameter[] parameters = {
+        new SqlParameter("@FirstName", student.FirstName),
+        new SqlParameter("@LastName", student.LastName),
+        new SqlParameter("@Tel", student.Tel),
+        new SqlParameter("@Class", student.Class)
+    };
+            ExecuteEditQuery(query, parameters);
+        }
+
+        public void UpdateStudent(Student student)
+        {
+            string query = "UPDATE Students SET FirstName = @FirstName, LastName = @LastName, Tel = @Tel, Class = @Class WHERE Id = @Id";
+            SqlParameter[] parameters = {
+        new SqlParameter("@FirstName", student.FirstName),
+        new SqlParameter("@LastName", student.LastName),
+        new SqlParameter("@Tel", student.Tel),
+        new SqlParameter("@Class", student.Class),
+        new SqlParameter("@Id", student.Id)
+    };
+            ExecuteEditQuery(query, parameters);
+        }
+
+        public void DeleteStudent(int studentId)
+        {
+            string query = "DELETE FROM [Students] WHERE Id = @Id";
+            SqlParameter[] parameters =
+               {
+                new SqlParameter("@Id", studentId)
+            };
+            ExecuteEditQuery(query, parameters);
         }
     }
 }
