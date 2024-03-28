@@ -338,16 +338,14 @@ namespace SomerenUI
             bar_Managment.Show();
         }
 
-<<<<<<< Updated upstream
+
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
 
 
         }
-=======
-        
->>>>>>> Stashed changes
+
 
 
 
