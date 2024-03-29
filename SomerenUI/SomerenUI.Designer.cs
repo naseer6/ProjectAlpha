@@ -232,6 +232,7 @@
             pnlStudents.Size = new System.Drawing.Size(938, 453);
             pnlStudents.TabIndex = 2;
             // 
+
             // pictureBox1
             // 
             pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
@@ -253,7 +254,7 @@
             listViewStudents.TabIndex = 1;
             listViewStudents.UseCompatibleStateImageBehavior = false;
             listViewStudents.View = System.Windows.Forms.View.Details;
-            listViewStudents.SelectedIndexChanged += listViewStudents_SelectedIndexChanged;
+            
             // 
             // StudentID
             // 
@@ -524,7 +525,7 @@
             button1.TabIndex = 3;
             button1.Text = "Generate Report";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+           
             // 
             // pictureBox4
             // 

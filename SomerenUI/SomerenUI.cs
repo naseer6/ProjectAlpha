@@ -297,6 +297,7 @@ namespace SomerenUI
         }
 
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             DateTime startDate = dtpStartDate.Value.Date;
@@ -321,6 +322,7 @@ namespace SomerenUI
 
 
         }
+
 
 
 
@@ -357,6 +359,7 @@ namespace SomerenUI
 
 
         }
+
 
 
         private void CalculateAmount()
@@ -480,6 +483,8 @@ namespace SomerenUI
             }
         }
 
+
+
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -499,6 +504,7 @@ namespace SomerenUI
 
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
+
 
         }
 
