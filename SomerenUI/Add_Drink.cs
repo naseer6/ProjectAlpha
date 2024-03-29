@@ -43,15 +43,10 @@ namespace SomerenUI
                     DialogResult = DialogResult.No;
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void textBoxName_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
