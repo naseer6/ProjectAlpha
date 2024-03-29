@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
 using SomerenModel;
+using System;
 
 namespace SomerenDAL
 {
@@ -36,14 +37,30 @@ namespace SomerenDAL
             return students;
         }
 
+        public List<int> GetAllStudentIds()
+        {
+            string query = "SELECT Id FROM Students";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            DataTable resultTable = ExecuteSelectQuery(query, sqlParameters);
+
+            List<int> studentIds = new List<int>();
+            foreach (DataRow row in resultTable.Rows)
+            {
+                int studentId = Convert.ToInt32(row["Id"]);
+                studentIds.Add(studentId);
+            }
+            return studentIds;
+        }
+
         public void AddStudent(Student student)
         {
-            string query = "INSERT INTO Students (FirstName, LastName, Tel, Class) VALUES (@FirstName, @LastName, @Tel, @Class)";
+            string query = "INSERT INTO Students (Id, FirstName, LastName, Tel, Class) VALUES (@Id, @FirstName, @LastName, @Tel, @Class)";
             SqlParameter[] parameters = {
-        new SqlParameter("@FirstName", student.FirstName),
-        new SqlParameter("@LastName", student.LastName),
-        new SqlParameter("@Tel", student.Tel),
-        new SqlParameter("@Class", student.Class)
+                new SqlParameter("@Id", student.Id),
+                new SqlParameter("@FirstName", student.FirstName),
+                new SqlParameter("@LastName", student.LastName),
+                new SqlParameter("@Tel", student.Tel),
+                new SqlParameter("@Class", student.Class)
     };
             ExecuteEditQuery(query, parameters);
         }

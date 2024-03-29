@@ -20,6 +20,12 @@ namespace SomerenService
             return students;
         }
 
+        public List<int> GetStudentIds()
+        {
+            List<int> studentIds = studentdb.GetAllStudentIds(); 
+            return studentIds;
+        }
+
         public bool AddStudent(Student student)
         {
             try

@@ -18,9 +18,9 @@ namespace SomerenUI
         private StudentService studentService = new StudentService();
         public ManageStudents()
         {
-     
+
             InitializeComponent();
-            
+
         }
 
         private void ManageStudents_Load(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace SomerenUI
             {
 
                 ListViewItem li = new ListViewItem(student.Id.ToString());
-                li.SubItems.Add(student.FirstName + " " + student.LastName);
+                li.SubItems.Add(student.FirstName);
                 li.SubItems.Add(student.LastName);
                 li.SubItems.Add(student.Tel);
                 li.SubItems.Add(student.Class);
@@ -69,14 +69,49 @@ namespace SomerenUI
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             AddNewStudent addNewStudent = new AddNewStudent();
-            addNewStudent.ShowDialog();
-    
+            if (addNewStudent.ShowDialog() == DialogResult.OK)
+            {
+                Student newStudent = addNewStudent.GetNewStudent(); 
+                try
+                {
+                    studentService.AddStudent(newStudent); 
+
+                    students = GetStudents();
+                    DisplayStudents(students);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to add student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            
-           
+            if (listViewStudents.SelectedItems.Count == 1)
+            {
+                Student selectedStudent = (Student)listViewStudents.SelectedItems[0].Tag;
+                UpdateStudent updateStudent = new UpdateStudent(selectedStudent);
+                if (updateStudent.ShowDialog() == DialogResult.OK)
+                {
+                    Student updatedStudent = updateStudent.GetUpdatedStudent(); 
+                    try
+                    {
+                        studentService.UpdateStudent(updatedStudent); 
+                                                                      
+                        students = GetStudents();
+                        DisplayStudents(students);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to update student: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select one student to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
         }
@@ -99,7 +134,7 @@ namespace SomerenUI
 
                     if (success)
                     {
-                        
+                        students = GetStudents();
                         DisplayStudents(students);
 
 
@@ -117,6 +152,6 @@ namespace SomerenUI
 
         }
 
-       
+
     }
 }

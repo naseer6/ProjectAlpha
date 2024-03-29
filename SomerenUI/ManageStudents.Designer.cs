@@ -33,10 +33,11 @@
             buttonAdd = new System.Windows.Forms.Button();
             listViewStudents = new System.Windows.Forms.ListView();
             StudentID = new System.Windows.Forms.ColumnHeader();
-            SFullName = new System.Windows.Forms.ColumnHeader();
+            SFirstName = new System.Windows.Forms.ColumnHeader();
+            SLastName = new System.Windows.Forms.ColumnHeader();
             STel = new System.Windows.Forms.ColumnHeader();
-            Class = new System.Windows.Forms.ColumnHeader();
             label1 = new System.Windows.Forms.Label();
+            Sclass = new System.Windows.Forms.ColumnHeader();
             SuspendLayout();
             // 
             // buttonDelete
@@ -75,12 +76,12 @@
             // listViewStudents
             // 
             listViewStudents.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            listViewStudents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { StudentID, SFullName, STel, Class });
+            listViewStudents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { StudentID, SFirstName, SLastName, STel, Sclass });
             listViewStudents.FullRowSelect = true;
             listViewStudents.GridLines = true;
             listViewStudents.Location = new System.Drawing.Point(46, 64);
             listViewStudents.Name = "listViewStudents";
-            listViewStudents.Size = new System.Drawing.Size(387, 307);
+            listViewStudents.Size = new System.Drawing.Size(436, 307);
             listViewStudents.TabIndex = 13;
             listViewStudents.UseCompatibleStateImageBehavior = false;
             listViewStudents.View = System.Windows.Forms.View.Details;
@@ -90,20 +91,20 @@
             StudentID.Text = "Id";
             StudentID.Width = 40;
             // 
-            // SFullName
+            // SFirstName
             // 
-            SFullName.Text = "Full Name";
-            SFullName.Width = 140;
+            SFirstName.Text = "First Name";
+            SFirstName.Width = 140;
+            // 
+            // SLastName
+            // 
+            SLastName.Text = "Last Name";
+            SLastName.Width = 100;
             // 
             // STel
             // 
             STel.Text = "Tel. number";
-            STel.Width = 100;
-            // 
-            // Class
-            // 
-            Class.Text = "Class";
-            Class.Width = 80;
+            STel.Width = 80;
             // 
             // label1
             // 
@@ -114,6 +115,10 @@
             label1.Size = new System.Drawing.Size(107, 32);
             label1.TabIndex = 12;
             label1.Text = "Students";
+            // 
+            // Sclass
+            // 
+            Sclass.Text = "Class";
             // 
             // ManageStudents
             // 
@@ -139,9 +144,10 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.ListView listViewStudents;
         private System.Windows.Forms.ColumnHeader StudentID;
-        private System.Windows.Forms.ColumnHeader SFullName;
+        private System.Windows.Forms.ColumnHeader SFirstName;
+        private System.Windows.Forms.ColumnHeader SLastName;
         private System.Windows.Forms.ColumnHeader STel;
-        private System.Windows.Forms.ColumnHeader Class;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ColumnHeader Sclass;
     }
 }
