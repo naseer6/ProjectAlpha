@@ -20,7 +20,7 @@ namespace SomerenUI
         {
             InitializeComponent();
             updatedStudent = student;
-            
+
             firstName.Text = student.FirstName;
             lastName.Text = student.LastName;
             telNumber.Text = student.Tel;
@@ -29,7 +29,7 @@ namespace SomerenUI
 
         public Student GetUpdatedStudent()
         {
-            
+
             updatedStudent.FirstName = firstName.Text;
             updatedStudent.LastName = lastName.Text;
             updatedStudent.Tel = telNumber.Text;
@@ -40,6 +40,11 @@ namespace SomerenUI
         private void updateButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private void UpdateStudent_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -71,10 +71,10 @@ namespace SomerenUI
             AddNewStudent addNewStudent = new AddNewStudent();
             if (addNewStudent.ShowDialog() == DialogResult.OK)
             {
-                Student newStudent = addNewStudent.GetNewStudent(); 
+                Student newStudent = addNewStudent.GetNewStudent();
                 try
                 {
-                    studentService.AddStudent(newStudent); 
+                    studentService.AddStudent(newStudent);
 
                     students = GetStudents();
                     DisplayStudents(students);
@@ -94,11 +94,11 @@ namespace SomerenUI
                 UpdateStudent updateStudent = new UpdateStudent(selectedStudent);
                 if (updateStudent.ShowDialog() == DialogResult.OK)
                 {
-                    Student updatedStudent = updateStudent.GetUpdatedStudent(); 
+                    Student updatedStudent = updateStudent.GetUpdatedStudent();
                     try
                     {
-                        studentService.UpdateStudent(updatedStudent); 
-                                                                      
+                        studentService.UpdateStudent(updatedStudent);
+
                         students = GetStudents();
                         DisplayStudents(students);
                     }
@@ -152,6 +152,9 @@ namespace SomerenUI
 
         }
 
+        private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

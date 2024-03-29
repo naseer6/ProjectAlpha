@@ -43,9 +43,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(109, 51);
+            label1.Location = new System.Drawing.Point(125, 68);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(92, 21);
+            label1.Size = new System.Drawing.Size(115, 28);
             label1.TabIndex = 0;
             label1.Text = "First Name:";
             // 
@@ -53,27 +53,29 @@
             // 
             firstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             firstName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            firstName.Location = new System.Drawing.Point(109, 81);
+            firstName.Location = new System.Drawing.Point(125, 108);
+            firstName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             firstName.Name = "firstName";
-            firstName.Size = new System.Drawing.Size(183, 29);
+            firstName.Size = new System.Drawing.Size(209, 34);
             firstName.TabIndex = 1;
             // 
             // lastName
             // 
             lastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             lastName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lastName.Location = new System.Drawing.Point(109, 173);
+            lastName.Location = new System.Drawing.Point(125, 231);
+            lastName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             lastName.Name = "lastName";
-            lastName.Size = new System.Drawing.Size(183, 29);
+            lastName.Size = new System.Drawing.Size(209, 34);
             lastName.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(109, 143);
+            label2.Location = new System.Drawing.Point(125, 191);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(90, 21);
+            label2.Size = new System.Drawing.Size(113, 28);
             label2.TabIndex = 2;
             label2.Text = "Last Name:";
             // 
@@ -81,18 +83,19 @@
             // 
             telNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             telNumber.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            telNumber.Location = new System.Drawing.Point(109, 263);
+            telNumber.Location = new System.Drawing.Point(125, 351);
+            telNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             telNumber.Name = "telNumber";
-            telNumber.Size = new System.Drawing.Size(183, 29);
+            telNumber.Size = new System.Drawing.Size(209, 34);
             telNumber.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label3.Location = new System.Drawing.Point(109, 233);
+            label3.Location = new System.Drawing.Point(125, 311);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(103, 21);
+            label3.Size = new System.Drawing.Size(129, 28);
             label3.TabIndex = 4;
             label3.Text = "Tel. Number:";
             // 
@@ -100,18 +103,19 @@
             // 
             class1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             class1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            class1.Location = new System.Drawing.Point(109, 350);
+            class1.Location = new System.Drawing.Point(125, 467);
+            class1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             class1.Name = "class1";
-            class1.Size = new System.Drawing.Size(183, 29);
+            class1.Size = new System.Drawing.Size(209, 34);
             class1.TabIndex = 7;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label4.Location = new System.Drawing.Point(109, 320);
+            label4.Location = new System.Drawing.Point(125, 427);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(50, 21);
+            label4.Size = new System.Drawing.Size(62, 28);
             label4.TabIndex = 6;
             label4.Text = "Class:";
             // 
@@ -120,9 +124,10 @@
             button1.BackColor = System.Drawing.SystemColors.HotTrack;
             button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            button1.Location = new System.Drawing.Point(134, 419);
+            button1.Location = new System.Drawing.Point(153, 559);
+            button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(129, 50);
+            button1.Size = new System.Drawing.Size(147, 67);
             button1.TabIndex = 8;
             button1.Text = "ADD";
             button1.UseVisualStyleBackColor = false;
@@ -130,9 +135,9 @@
             // 
             // AddNewStudent
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(403, 505);
+            ClientSize = new System.Drawing.Size(461, 673);
             Controls.Add(button1);
             Controls.Add(class1);
             Controls.Add(label4);
@@ -142,8 +147,10 @@
             Controls.Add(label2);
             Controls.Add(firstName);
             Controls.Add(label1);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "AddNewStudent";
             Text = "AddNewStudent";
+            Load += AddNewStudent_Load;
             ResumeLayout(false);
             PerformLayout();
         }

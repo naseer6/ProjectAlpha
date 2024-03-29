@@ -15,18 +15,18 @@ namespace SomerenUI
 {
     public partial class AddNewStudent : Form
     {
-        
+
         public AddNewStudent()
         {
             InitializeComponent();
         }
 
-        
+
         public Student GetNewStudent()
         {
-            int newStudentId = GetNextStudentId(); 
+            int newStudentId = GetNextStudentId();
 
-            
+
             Student newStudent = new Student
             {
                 Id = newStudentId,
@@ -41,26 +41,31 @@ namespace SomerenUI
         StudentService studentService = new StudentService();
         private int GetNextStudentId()
         {
-            
 
-            List<int> existingIds = studentService.GetStudentIds(); 
 
-           
+            List<int> existingIds = studentService.GetStudentIds();
+
+
             if (existingIds.Count == 0)
             {
                 return 1;
             }
 
-            
+
             int maxId = existingIds.Max();
             return maxId + 1;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void AddNewStudent_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

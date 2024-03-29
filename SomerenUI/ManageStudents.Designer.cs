@@ -36,16 +36,17 @@
             SFirstName = new System.Windows.Forms.ColumnHeader();
             SLastName = new System.Windows.Forms.ColumnHeader();
             STel = new System.Windows.Forms.ColumnHeader();
-            label1 = new System.Windows.Forms.Label();
             Sclass = new System.Windows.Forms.ColumnHeader();
+            label1 = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
             // buttonDelete
             // 
             buttonDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            buttonDelete.Location = new System.Drawing.Point(540, 292);
+            buttonDelete.Location = new System.Drawing.Point(617, 389);
+            buttonDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new System.Drawing.Size(145, 61);
+            buttonDelete.Size = new System.Drawing.Size(166, 81);
             buttonDelete.TabIndex = 16;
             buttonDelete.Text = "Delete";
             buttonDelete.UseVisualStyleBackColor = true;
@@ -54,9 +55,10 @@
             // buttonChange
             // 
             buttonChange.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            buttonChange.Location = new System.Drawing.Point(540, 187);
+            buttonChange.Location = new System.Drawing.Point(617, 249);
+            buttonChange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             buttonChange.Name = "buttonChange";
-            buttonChange.Size = new System.Drawing.Size(145, 61);
+            buttonChange.Size = new System.Drawing.Size(166, 81);
             buttonChange.TabIndex = 15;
             buttonChange.Text = "CHANGE";
             buttonChange.UseVisualStyleBackColor = true;
@@ -65,9 +67,10 @@
             // buttonAdd
             // 
             buttonAdd.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            buttonAdd.Location = new System.Drawing.Point(540, 92);
+            buttonAdd.Location = new System.Drawing.Point(617, 123);
+            buttonAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new System.Drawing.Size(145, 61);
+            buttonAdd.Size = new System.Drawing.Size(166, 81);
             buttonAdd.TabIndex = 14;
             buttonAdd.Text = "ADD";
             buttonAdd.UseVisualStyleBackColor = true;
@@ -79,12 +82,14 @@
             listViewStudents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { StudentID, SFirstName, SLastName, STel, Sclass });
             listViewStudents.FullRowSelect = true;
             listViewStudents.GridLines = true;
-            listViewStudents.Location = new System.Drawing.Point(46, 64);
+            listViewStudents.Location = new System.Drawing.Point(53, 85);
+            listViewStudents.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             listViewStudents.Name = "listViewStudents";
-            listViewStudents.Size = new System.Drawing.Size(436, 307);
+            listViewStudents.Size = new System.Drawing.Size(498, 408);
             listViewStudents.TabIndex = 13;
             listViewStudents.UseCompatibleStateImageBehavior = false;
             listViewStudents.View = System.Windows.Forms.View.Details;
+            listViewStudents.SelectedIndexChanged += listViewStudents_SelectedIndexChanged;
             // 
             // StudentID
             // 
@@ -106,30 +111,31 @@
             STel.Text = "Tel. number";
             STel.Width = 80;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(46, 29);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(107, 32);
-            label1.TabIndex = 12;
-            label1.Text = "Students";
-            // 
             // Sclass
             // 
             Sclass.Text = "Class";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(53, 39);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(134, 41);
+            label1.TabIndex = 12;
+            label1.Text = "Students";
+            // 
             // ManageStudents
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            ClientSize = new System.Drawing.Size(914, 600);
             Controls.Add(buttonDelete);
             Controls.Add(buttonChange);
             Controls.Add(buttonAdd);
             Controls.Add(listViewStudents);
             Controls.Add(label1);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "ManageStudents";
             Text = "ManageStudents";
             Load += ManageStudents_Load;
