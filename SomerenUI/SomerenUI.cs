@@ -487,26 +487,31 @@ namespace SomerenUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AddNewStudent addNewStudent = new AddNewStudent();
-            addNewStudent.ShowDialog();
+
+            
+
 
         }
 
         private void updateStudent_Click(object sender, EventArgs e)
         {
-            UpdateStudent updateStudent = new UpdateStudent();
-            updateStudent.ShowDialog();
+            
+
         }
 
-        private void deleteStudent_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show($"Are you sure you wish to delete?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        }
+        
+            
 
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
 
 
+        }
+
+        private void manageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageStudents manageStudent = new ManageStudents();
+            manageStudent.ShowDialog();
         }
     }
 }

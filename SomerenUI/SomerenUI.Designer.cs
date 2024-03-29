@@ -44,9 +44,6 @@
             pnlDashboard = new System.Windows.Forms.Panel();
             lblDashboard = new System.Windows.Forms.Label();
             pnlStudents = new System.Windows.Forms.Panel();
-            deleteStudent = new System.Windows.Forms.Button();
-            updateStudent = new System.Windows.Forms.Button();
-            addStudent = new System.Windows.Forms.Button();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             listViewStudents = new System.Windows.Forms.ListView();
             StudentID = new System.Windows.Forms.ColumnHeader();
@@ -104,6 +101,7 @@
             columnHeader11 = new System.Windows.Forms.ColumnHeader();
             columnHeader12 = new System.Windows.Forms.ColumnHeader();
             label20 = new System.Windows.Forms.Label();
+            manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             pnlDashboard.SuspendLayout();
             pnlStudents.SuspendLayout();
@@ -152,6 +150,7 @@
             // 
             // studentsToolStripMenuItem
             // 
+            studentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { manageToolStripMenuItem });
             studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
             studentsToolStripMenuItem.Size = new System.Drawing.Size(65, 22);
             studentsToolStripMenuItem.Text = "Students";
@@ -175,7 +174,7 @@
             // supervisorsToolStripMenuItem
             // 
             supervisorsToolStripMenuItem.Name = "supervisorsToolStripMenuItem";
-            supervisorsToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            supervisorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             supervisorsToolStripMenuItem.Text = "Supervisors";
             supervisorsToolStripMenuItem.Click += supervisorsToolStripMenuItem_Click;
             // 
@@ -225,9 +224,6 @@
             // 
             // pnlStudents
             // 
-            pnlStudents.Controls.Add(deleteStudent);
-            pnlStudents.Controls.Add(updateStudent);
-            pnlStudents.Controls.Add(addStudent);
             pnlStudents.Controls.Add(pictureBox1);
             pnlStudents.Controls.Add(listViewStudents);
             pnlStudents.Controls.Add(label1);
@@ -236,39 +232,7 @@
             pnlStudents.Size = new System.Drawing.Size(938, 453);
             pnlStudents.TabIndex = 2;
             // 
-            // deleteStudent
-            // 
-            deleteStudent.Font = new System.Drawing.Font("Raleway", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            deleteStudent.Location = new System.Drawing.Point(461, 269);
-            deleteStudent.Name = "deleteStudent";
-            deleteStudent.Size = new System.Drawing.Size(145, 51);
-            deleteStudent.TabIndex = 5;
-            deleteStudent.Text = "Delete";
-            deleteStudent.UseVisualStyleBackColor = true;
-           
-            // 
-            // updateStudent
-            // 
-            updateStudent.Font = new System.Drawing.Font("Raleway", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            updateStudent.Location = new System.Drawing.Point(461, 166);
-            updateStudent.Name = "updateStudent";
-            updateStudent.Size = new System.Drawing.Size(145, 51);
-            updateStudent.TabIndex = 4;
-            updateStudent.Text = "Update";
-            updateStudent.UseVisualStyleBackColor = true;
-            
-            // 
-            // addStudent
-            // 
-            addStudent.Font = new System.Drawing.Font("Raleway", 11.9999981F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            addStudent.Location = new System.Drawing.Point(461, 70);
-            addStudent.Name = "addStudent";
-            addStudent.Size = new System.Drawing.Size(145, 49);
-            addStudent.TabIndex = 3;
-            addStudent.Text = "Add";
-            addStudent.UseVisualStyleBackColor = true;
-            
-            // 
+
             // pictureBox1
             // 
             pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
@@ -286,7 +250,7 @@
             listViewStudents.GridLines = true;
             listViewStudents.Location = new System.Drawing.Point(13, 40);
             listViewStudents.Name = "listViewStudents";
-            listViewStudents.Size = new System.Drawing.Size(365, 307);
+            listViewStudents.Size = new System.Drawing.Size(700, 307);
             listViewStudents.TabIndex = 1;
             listViewStudents.UseCompatibleStateImageBehavior = false;
             listViewStudents.View = System.Windows.Forms.View.Details;
@@ -738,6 +702,13 @@
             label20.TabIndex = 0;
             label20.Text = "Order Drinks";
             // 
+            // manageToolStripMenuItem
+            // 
+            manageToolStripMenuItem.Name = "manageToolStripMenuItem";
+            manageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            manageToolStripMenuItem.Text = "Manage";
+            manageToolStripMenuItem.Click += manageToolStripMenuItem_Click;
+            // 
             // SomerenUI
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -852,8 +823,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolStripMenuItem supervisorsToolStripMenuItem;
-        private System.Windows.Forms.Button deleteStudent;
-        private System.Windows.Forms.Button updateStudent;
-        private System.Windows.Forms.Button addStudent;
+        private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
     }
 }
