@@ -1,10 +1,12 @@
 ﻿using SomerenModel;
+using SomerenService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,12 +16,48 @@ namespace SomerenUI
 {
     public partial class Add_Teacher : Form
     {
-        private Teacher teacher = null;
-        public Add_Teacher(Teacher teacher)
+       
+        public Add_Teacher()
         {
             InitializeComponent();
-            this.teacher = teacher;
+           
         }
+
+        public Teacher GetNewTeacher()
+        {
+            int newTeacherId = GetNextTeacherId();
+
+
+            Teacher newTeacher = new Teacher
+            {
+                Id = newTeacherId,
+                FirstName = textBoxFirstName.Text,
+                LastName = textBoxLastName.Text,
+                TelephoneNumber = int.Parse(textBoxTelNumber.Text),
+                Age = int.Parse(textBoxAge.Text),
+            };
+
+            return newTeacher;
+        }
+        TeachersService teachersService = new TeachersService();
+        private int GetNextTeacherId()
+        {
+
+
+            List<int> existingIds = teachersService.GetTeachersIds();
+
+
+            if (existingIds.Count == 0)
+            {
+                return 1;
+            }
+
+
+            int maxId = existingIds.Max();
+            return maxId + 1;
+        }
+
+
 
         private void Add_Teacher_Load(object sender, EventArgs e)
         {
@@ -29,27 +67,8 @@ namespace SomerenUI
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                teacher.FirstName = textBoxFirstName.Text;
-                teacher.LastName = textBoxLastName.Text;
-                int telephoneNumber = int.Parse(textBoxTelNumber.Text);
-                int age = int.Parse(textBoxAge.Text);
-                if (age > 0)
-                {
-                    teacher.Age = age;
-                    DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("Invalid Value");
-                    DialogResult = DialogResult.No;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+           DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

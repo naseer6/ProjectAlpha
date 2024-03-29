@@ -15,7 +15,7 @@ namespace SomerenUI
     public partial class Lecturer_Managment : Form
     {
         private List<Teacher> teachers = new List<Teacher>();
-       
+        TeachersService teacherService = new TeachersService();
         public Lecturer_Managment()
         {
             InitializeComponent();
@@ -24,15 +24,22 @@ namespace SomerenUI
         private void buttonAdd_Click(object sender, EventArgs e)
         {
 
-            Teacher teacher = new Teacher();
-
-
-            Add_Teacher add_Teacher = new Add_Teacher(teacher);
-            if (add_Teacher.ShowDialog() == DialogResult.OK)
+            Add_Teacher addNewTeacher = new Add_Teacher();
+            if (addNewTeacher.ShowDialog() == DialogResult.OK)
             {
-                teachers.Add(teacher);
+                Teacher newTeacher = addNewTeacher.GetNewTeacher();
+                try
+                {
+                    teacherService.AddTeacher(newTeacher);
+
+                    teachers = GetTeachers();
+                    DisplayLecturers(teachers);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to add teacher: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            DisplayLecturers(teachers);
         }
 
         private void listViewTeachers_SelectedIndexChanged(object sender, EventArgs e)
@@ -42,7 +49,7 @@ namespace SomerenUI
 
         private List<Teacher> GetTeachers()
         {
-            TeachersService teacherService = new TeachersService();
+            
             List<Teacher> teachers = teacherService.GetTeachers();
             return teachers;
         }
@@ -83,21 +90,27 @@ namespace SomerenUI
         {
             if (listViewTeachers_.SelectedItems.Count == 1)
             {
-                Teacher teacher = (Teacher)listViewTeachers_.SelectedItems[0].Tag;
-                Change_Lecturer changeLecturer = new Change_Lecturer(teacher);
-                if (changeLecturer.ShowDialog() == DialogResult.OK)
+                Teacher selectedTeacher = (Teacher)listViewTeachers_.SelectedItems[0].Tag;
+                Change_Lecturer updateTeacher = new Change_Lecturer(selectedTeacher);
+                if (updateTeacher.ShowDialog() == DialogResult.OK)
                 {
-                    int index = teachers.FindIndex(d => d.Id == teacher.Id);
-                    if (index != -1)
+                    Teacher updatedTeacher = updateTeacher.GetUpdatedTeacher();
+                    try
                     {
-                        teachers[index] = teacher;
+                        teacherService.UpdateTeacher(updatedTeacher);
+
+                        teachers = GetTeachers();
+                        DisplayLecturers(teachers);
                     }
-                    DisplayLecturers(teachers);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to update teacher: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Select one item", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Select one student to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -105,18 +118,36 @@ namespace SomerenUI
         {
             if (listViewTeachers_.SelectedItems.Count == 1)
             {
-                Teacher teacher = (Teacher)listViewTeachers_.SelectedItems[0].Tag;
-                int index = teachers.FindIndex(d => d.Id == teacher.Id);
-                if (index != -1)
+
+                Teacher selectedTeacher = (Teacher)listViewTeachers_.SelectedItems[0].Tag;
+
+
+                DialogResult result = MessageBox.Show("Are you sure?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
                 {
-                    teachers.RemoveAt(index);
+
+                    TeachersService teacherService = new TeachersService();
+                    var success = teacherService.DeleteTeacher(selectedTeacher.Id);
+
+                    if (success)
+                    {
+                        teachers = GetTeachers();
+                        DisplayLecturers(teachers);
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete teacher. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                DisplayLecturers(teachers);
             }
             else
             {
-                MessageBox.Show("Select one item", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Select one teacher to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
     }
 }
