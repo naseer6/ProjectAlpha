@@ -18,5 +18,14 @@ namespace SomerenService
             List<Student> students = studentdb.GetAllStudents();
             return students;
         }
+        public List<Student> GetByActivityId(int id)
+        {
+            return studentdb.GetByActivityId(id);
+        }
+        public List<Student> GetNonAssignedStudents(int id)
+        {
+            return studentdb.GetNonAssignedStudents(id);
+        }
+
     }
 }

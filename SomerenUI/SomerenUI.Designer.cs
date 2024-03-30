@@ -105,6 +105,7 @@
             label18 = new System.Windows.Forms.Label();
             pictureBox7 = new System.Windows.Forms.PictureBox();
             label20 = new System.Windows.Forms.Label();
+            participantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             pnlDashboard.SuspendLayout();
             pnlStudents.SuspendLayout();
@@ -168,6 +169,7 @@
             // 
             // activitiesToolStripMenuItem
             // 
+            activitiesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { participantsToolStripMenuItem });
             activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
             activitiesToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             activitiesToolStripMenuItem.Text = "Activities";
@@ -773,6 +775,13 @@
             label20.TabIndex = 0;
             label20.Text = "VAT Report";
             // 
+            // participantsToolStripMenuItem
+            // 
+            participantsToolStripMenuItem.Name = "participantsToolStripMenuItem";
+            participantsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            participantsToolStripMenuItem.Text = "Participants";
+            participantsToolStripMenuItem.Click += participantsToolStripMenuItem_Click;
+            // 
             // SomerenUI
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -895,5 +904,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox comboQ;
         private System.Windows.Forms.ComboBox comboYear;
+        private System.Windows.Forms.ToolStripMenuItem participantsToolStripMenuItem;
     }
 }

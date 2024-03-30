@@ -305,7 +305,7 @@ namespace SomerenUI
 
 
 
-    
+
 
 
 
@@ -325,7 +325,7 @@ namespace SomerenUI
                 // Create an instance of SoldDrinks class
                 SoldDrinks soldDrinks = new SoldDrinks();
 
-                // Get the total turnover for alcoholic and non-alcoholic drinks
+                // Get the total for alcoholic and non-alcoholic drinks
                 (decimal alcoholicTotal, decimal nonAlcoholicTotal) = soldDrinks.GetTotal(startDate, endDate);
 
                 // Calculate the total VAT by adding both alcoholic and non-alcoholic VAT amounts
@@ -417,6 +417,12 @@ namespace SomerenUI
         private void comboYear_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             UpdateLabels();
+        }
+
+        private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Activity_Part student_Participates = new Activity_Part();
+            student_Participates.ShowDialog();
         }
     }
 }
