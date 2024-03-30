@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,7 +22,7 @@ namespace SomerenUI
             textBoxLastName.Text = teacher.LastName;
             textBoxTelNumber.Text = teacher.TelephoneNumber.ToString();
             textBoxAge.Text = teacher.Age.ToString();
-            
+
         }
 
         public Teacher GetUpdatedTeacher()
@@ -39,13 +38,15 @@ namespace SomerenUI
         private void Change_Lecturer_Load(object sender, EventArgs e)
         {
 
-            
+
 
         }
 
-        private void buttonUpdate_Click(object sender, EventArgs e)
+       
+
+        private void buttonUpdate_Click_1(object sender, EventArgs e)
         {
-           DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
     }
 }

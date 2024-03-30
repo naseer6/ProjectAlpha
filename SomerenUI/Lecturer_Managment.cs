@@ -21,26 +21,6 @@ namespace SomerenUI
             InitializeComponent();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-
-            Add_Teacher addNewTeacher = new Add_Teacher();
-            if (addNewTeacher.ShowDialog() == DialogResult.OK)
-            {
-                Teacher newTeacher = addNewTeacher.GetNewTeacher();
-                try
-                {
-                    teacherService.AddTeacher(newTeacher);
-
-                    teachers = GetTeachers();
-                    DisplayLecturers(teachers);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to add teacher: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
 
         private void listViewTeachers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -49,7 +29,7 @@ namespace SomerenUI
 
         private List<Teacher> GetTeachers()
         {
-            
+
             List<Teacher> teachers = teacherService.GetTeachers();
             return teachers;
         }
@@ -86,7 +66,31 @@ namespace SomerenUI
             }
         }
 
-        private void buttonChange_Click(object sender, EventArgs e)
+
+
+
+
+        private void buttonAdd_Click_1(object sender, EventArgs e)
+        {
+            Add_Teacher addNewTeacher = new Add_Teacher();
+            if (addNewTeacher.ShowDialog() == DialogResult.OK)
+            {
+                Teacher newTeacher = addNewTeacher.GetNewTeacher();
+                try
+                {
+                    teacherService.AddTeacher(newTeacher);
+
+                    teachers = GetTeachers();
+                    DisplayLecturers(teachers);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to add teacher: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonChange_Click_1(object sender, EventArgs e)
         {
             if (listViewTeachers_.SelectedItems.Count == 1)
             {
@@ -147,7 +151,6 @@ namespace SomerenUI
             {
                 MessageBox.Show("Select one teacher to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

@@ -6,21 +6,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.LinkLabel;
 
 namespace SomerenUI
 {
     public partial class Add_Teacher : Form
     {
-       
         public Add_Teacher()
         {
             InitializeComponent();
-           
+
         }
 
         public Teacher GetNewTeacher()
@@ -61,13 +58,15 @@ namespace SomerenUI
 
         private void Add_Teacher_Load(object sender, EventArgs e)
         {
-           
+
 
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+       
+
+        private void buttonAdd_Click_1(object sender, EventArgs e)
         {
-           DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

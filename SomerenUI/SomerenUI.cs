@@ -492,19 +492,19 @@ namespace SomerenUI
         private void button2_Click(object sender, EventArgs e)
         {
 
-            
+
 
 
         }
 
         private void updateStudent_Click(object sender, EventArgs e)
         {
-            
+
 
         }
 
-        
-            
+
+
 
         private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -516,6 +516,12 @@ namespace SomerenUI
         {
             ManageStudents manageStudent = new ManageStudents();
             manageStudent.ShowDialog();
+        }
+
+        private void lecturersManagmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lecturer_Managment lecturer_Managment = new Lecturer_Managment();
+            lecturer_Managment.Show();
         }
     }
 }
