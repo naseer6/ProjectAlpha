@@ -54,9 +54,8 @@ namespace SomerenDAL
 
         public void AddTeacher(Teacher teacher)
         {
-            string query = "INSERT INTO lecturers (Id, FirstName, LastName, TelephoneNumber, Age) VALUES (@Id, @FirstName, @LastName, @TelephoneNumber, @Age)";
+            string query = "INSERT INTO lecturers (FirstName, LastName, TelephoneNumber, Age) VALUES (@FirstName, @LastName, @TelephoneNumber, @Age)";
             SqlParameter[] parameters = {
-                new SqlParameter("@Id", teacher.Id),
                 new SqlParameter("@FirstName", teacher.FirstName),
                 new SqlParameter("@LastName", teacher.LastName),
                 new SqlParameter("@TelephoneNumber", teacher.TelephoneNumber),

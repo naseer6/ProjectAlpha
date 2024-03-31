@@ -72,14 +72,13 @@ namespace SomerenUI
 
         private void buttonAdd_Click_1(object sender, EventArgs e)
         {
-            Add_Teacher addNewTeacher = new Add_Teacher();
+            Teacher teacher = new Teacher();
+            Add_Teacher addNewTeacher = new Add_Teacher(teacher);
             if (addNewTeacher.ShowDialog() == DialogResult.OK)
             {
-                Teacher newTeacher = addNewTeacher.GetNewTeacher();
                 try
                 {
-                    teacherService.AddTeacher(newTeacher);
-
+                    teacherService.AddTeacher(teacher);
                     teachers = GetTeachers();
                     DisplayLecturers(teachers);
                 }
