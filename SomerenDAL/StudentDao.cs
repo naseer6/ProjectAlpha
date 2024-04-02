@@ -87,5 +87,26 @@ namespace SomerenDAL
             };
             ExecuteEditQuery(query, parameters);
         }
+
+        public List<Student> GetByActivityId(int id)
+        {
+            string query = "SELECT * FROM [students] WHERE [Id] IN ( SELECT [StudentId] FROM [Student_Participate] WHERE [ActivityId] = @id);";
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@id", id)
+            };
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public List<Student> GetNonAssignedStudents(int id)
+        {
+            string query = "SELECT * FROM [students] WHERE [Id] NOT IN ( SELECT [StudentId] FROM [Student_Participate] WHERE [ActivityId] = @id);";
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@id", id)
+            };
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+
     }
 }

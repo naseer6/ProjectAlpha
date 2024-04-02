@@ -33,6 +33,8 @@ namespace SomerenUI
             pnlActivities.Hide();
             pnlRevenue.Hide();
             pnlOrder.Hide();
+            pnlRooms.Hide();
+            pnlVAT.Hide();
             pnlDashboard.Show();
 
         }
@@ -45,6 +47,8 @@ namespace SomerenUI
             pnlActivities.Hide();
             pnlRevenue.Hide();
             pnlOrder.Hide();
+            pnlRooms.Hide();
+            pnlVAT.Hide();
             // show students
             pnlStudents.Show();
 
@@ -68,7 +72,8 @@ namespace SomerenUI
             pnlActivities.Hide();
             pnlRevenue.Hide();
             pnlOrder.Hide();
-
+            pnlRooms.Hide();
+            pnlVAT.Hide();
             // show teachers
             pnlTeachers.Show();
 
@@ -92,6 +97,8 @@ namespace SomerenUI
             pnlTeachers.Hide();
             pnlRevenue.Hide();
             pnlOrder.Hide();
+            pnlRooms.Hide();
+            pnlVAT.Hide();
             // show activities
             pnlActivities.Show();
 
@@ -104,6 +111,33 @@ namespace SomerenUI
             catch (Exception e)
             {
                 MessageBox.Show("Something went wrong while loading the activities: " + e.Message);
+            }
+        }
+
+        private void ShowRoomsPanel()
+        {
+            // hide all other panels
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlTeachers.Hide();
+            pnlRevenue.Hide();
+            pnlOrder.Hide();
+            pnlActivities.Hide();
+            pnlVAT.Hide();
+
+
+            // show Rooms
+            pnlRooms.Show();
+
+            try
+            {
+                // get and display all students
+                List<Room> rooms = GetRooms();
+                DisplayRooms(rooms);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
             }
         }
 
@@ -151,6 +185,8 @@ namespace SomerenUI
             pnlRevenue.Hide();
             pnlStudents.Hide();
             pnlOrder.Hide();
+            pnlRooms.Hide();
+            pnlVAT.Hide();
             pnlOrder.Show();
 
             try
@@ -186,6 +222,13 @@ namespace SomerenUI
             ActivityService activityService = new ActivityService();
             List<Activity> activities = activityService.GetActivities();
             return activities;
+        }
+
+        private List<Room> GetRooms()
+        {
+            RoomService roomService = new RoomService();
+            List<Room> rooms = roomService.GetRooms();
+            return rooms;
         }
 
         private void DisplayStudents(List<Student> students)
@@ -249,6 +292,22 @@ namespace SomerenUI
             }
         }
 
+        private void DisplayRooms(List<Room> rooms)
+        {
+            // clear the listview before filling it
+            listViewRooms.Items.Clear();
+
+            foreach (Room room in rooms)
+            {
+                ListViewItem li = new ListViewItem(room.Id.ToString());
+                li.SubItems.Add(room.Number.ToString());
+                li.SubItems.Add(room.Capacity.ToString());
+                li.SubItems.Add(room.Type.ToString());
+                li.Tag = room;   // link room object to listview item
+                listViewRooms.Items.Add(li);
+            }
+        }
+
         private void ShowRevenuePanel()
         {
             pnlDashboard.Hide();
@@ -256,8 +315,21 @@ namespace SomerenUI
             pnlTeachers.Hide();
             pnlActivities.Hide();
             pnlOrder.Hide();
+            pnlRooms.Hide();
+            pnlVAT.Hide();
             pnlRevenue.Show();
 
+        }
+
+        private void ShowVATPanel()
+        {
+            pnlDashboard.Hide();
+            pnlStudents.Hide();
+            pnlTeachers.Hide();
+            pnlActivities.Hide();
+            pnlRevenue.Hide();
+            pnlRooms.Hide();
+            pnlVAT.Show();
         }
 
         private void SomerenUI_Load(object sender, EventArgs e)
@@ -488,6 +560,61 @@ namespace SomerenUI
         }
 
 
+        private void UpdateLabels()
+        {
+            if (comboYear.SelectedItem != null && comboQ.SelectedItem != null)
+            {
+                int year = Convert.ToInt32(comboYear.SelectedItem);
+                string quarter = comboQ.SelectedItem.ToString();
+
+                // Determine start and end dates of the selected quarter
+                DateTime startDate, endDate;
+                CalculateQuarterDates(year, quarter, out startDate, out endDate);
+                startQ.Text = startDate.ToString("dd-MM-yyyy");
+                endQ.Text = endDate.ToString("dd-MM-yyyy");
+
+                // Create an instance of SoldDrinks class
+                SoldDrinks soldDrinks = new SoldDrinks();
+
+                // Get the total for alcoholic and non-alcoholic drinks
+                (decimal alcoholicTotal, decimal nonAlcoholicTotal) = soldDrinks.GetTotal(startDate, endDate);
+
+                // Calculate the total VAT by adding both alcoholic and non-alcoholic VAT amounts
+                decimal totalVAT = alcoholicTotal + nonAlcoholicTotal;
+
+                // Display VAT amounts
+                VATlow.Text = nonAlcoholicTotal.ToString("C");
+                VAThigh.Text = alcoholicTotal.ToString("C");
+                VATtot.Text = totalVAT.ToString("C");
+            }
+        }
+
+
+        private void CalculateQuarterDates(int year, string quarter, out DateTime startDate, out DateTime endDate)
+        {
+
+
+            // Determine the start and end dates based on the selected quarter
+            int monthOffset = 0;
+
+            // Determine the month offset based on the selected quarter
+            if (quarter == "Q1")
+                monthOffset = 0;
+            else if (quarter == "Q2")
+                monthOffset = 3;
+            else if (quarter == "Q3")
+                monthOffset = 6;
+            else if (quarter == "Q4")
+                monthOffset = 9;
+            else
+                throw new ArgumentException("Invalid quarter specified.");
+
+            // Calculate start and end dates
+            startDate = new DateTime(year, monthOffset + 1, 1);
+            endDate = new DateTime(year, monthOffset + 3, DateTime.DaysInMonth(year, monthOffset + 3));
+        }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -522,6 +649,32 @@ namespace SomerenUI
         {
             Lecturer_Managment lecturer_Managment = new Lecturer_Managment();
             lecturer_Managment.Show();
+        }
+
+        private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowRoomsPanel();
+        }
+
+        private void vATToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowVATPanel();
+        }
+
+        private void comboYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateLabels();
+        }
+
+        private void comboQ_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateLabels();
+        }
+
+        private void participantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Activity_Part student_Participates = new Activity_Part();
+            student_Participates.ShowDialog();
         }
     }
 }
