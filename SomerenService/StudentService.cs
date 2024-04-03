@@ -22,7 +22,7 @@ namespace SomerenService
 
         public List<int> GetStudentIds()
         {
-            List<int> studentIds = studentdb.GetAllStudentIds(); 
+            List<int> studentIds = studentdb.GetAllStudentIds();
             return studentIds;
         }
 
@@ -30,14 +30,13 @@ namespace SomerenService
         {
             try
             {
-                
                 studentdb.AddStudent(student);
-                return true; 
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error adding student: " + ex.Message);
-                return false; 
+                return false;
             }
         }
 
@@ -45,14 +44,13 @@ namespace SomerenService
         {
             try
             {
-               
                 studentdb.UpdateStudent(student);
-                return true; 
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error updating student: " + ex.Message);
-                return false; 
+                return false;
             }
         }
 
@@ -60,14 +58,13 @@ namespace SomerenService
         {
             try
             {
-                
                 studentdb.DeleteStudent(studentId);
-                return true; 
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error deleting student: " + ex.Message);
-                return false; 
+                return false;
             }
         }
     }

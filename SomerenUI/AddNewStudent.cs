@@ -41,16 +41,12 @@ namespace SomerenUI
         StudentService studentService = new StudentService();
         private int GetNextStudentId()
         {
-
-
             List<int> existingIds = studentService.GetStudentIds();
-
 
             if (existingIds.Count == 0)
             {
                 return 1;
             }
-
 
             int maxId = existingIds.Max();
             return maxId + 1;
@@ -58,7 +54,6 @@ namespace SomerenUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             DialogResult = DialogResult.OK;
             Close();
         }

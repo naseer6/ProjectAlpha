@@ -20,7 +20,6 @@ namespace SomerenUI
         {
             InitializeComponent();
             updatedStudent = student;
-
             firstName.Text = student.FirstName;
             lastName.Text = student.LastName;
             telNumber.Text = student.Tel;
@@ -29,7 +28,6 @@ namespace SomerenUI
 
         public Student GetUpdatedStudent()
         {
-
             updatedStudent.FirstName = firstName.Text;
             updatedStudent.LastName = lastName.Text;
             updatedStudent.Tel = telNumber.Text;
