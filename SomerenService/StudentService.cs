@@ -67,5 +67,15 @@ namespace SomerenService
                 return false;
             }
         }
+
+        public List<Student> GetByActivityId(int id)
+        {
+            return studentdb.GetByActivityId(id);
+        }
+        public List<Student> GetNonAssignedStudents(int id)
+        {
+            return studentdb.GetNonAssignedStudents(id);
+        }
+
     }
 }
