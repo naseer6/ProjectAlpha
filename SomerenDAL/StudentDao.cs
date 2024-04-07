@@ -61,7 +61,7 @@ namespace SomerenDAL
                 new SqlParameter("@LastName", student.LastName),
                 new SqlParameter("@Tel", student.Tel),
                 new SqlParameter("@Class", student.Class)
-    };
+                };
             ExecuteEditQuery(query, parameters);
         }
 
@@ -74,7 +74,7 @@ namespace SomerenDAL
         new SqlParameter("@Tel", student.Tel),
         new SqlParameter("@Class", student.Class),
         new SqlParameter("@Id", student.Id)
-    };
+                 };
             ExecuteEditQuery(query, parameters);
         }
 

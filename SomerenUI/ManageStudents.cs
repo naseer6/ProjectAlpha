@@ -18,9 +18,7 @@ namespace SomerenUI
         private StudentService studentService = new StudentService();
         public ManageStudents()
         {
-
             InitializeComponent();
-
         }
 
         private void ManageStudents_Load(object sender, EventArgs e)

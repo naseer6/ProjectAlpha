@@ -213,7 +213,11 @@
             // supervisorsToolStripMenuItem
             // 
             supervisorsToolStripMenuItem.Name = "supervisorsToolStripMenuItem";
+
             supervisorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+
+            supervisorsToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+
             supervisorsToolStripMenuItem.Text = "Supervisors";
             supervisorsToolStripMenuItem.Click += supervisorsToolStripMenuItem_Click;
             // 
@@ -577,6 +581,7 @@
             button1.TabIndex = 3;
             button1.Text = "Generate Report";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // pictureBox4
             // 
@@ -997,15 +1002,17 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(963, 497);
+
+          
             Controls.Add(pnlVAT);
             Controls.Add(pnlRooms);
             Controls.Add(menuStrip1);
+            Controls.Add(pnlRevenue);
+            Controls.Add(pnlActivities);
             Controls.Add(pnlStudents);
             Controls.Add(pnlDashboard);
             Controls.Add(pnlTeachers);
             Controls.Add(pnlOrder);
-            Controls.Add(pnlRevenue);
-            Controls.Add(pnlActivities);
             MainMenuStrip = menuStrip1;
             Name = "SomerenUI";
             Text = "SomerenApp";

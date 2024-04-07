@@ -278,8 +278,7 @@ namespace SomerenUI
         }
 
         private void DisplayActivities(List<Activity> activities)
-        {
-            // clear the listview before filling it
+        {           
             listViewActivities.Items.Clear();
 
             foreach (Activity activity in activities)
@@ -369,34 +368,22 @@ namespace SomerenUI
         }
 
 
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             DateTime startDate = dtpStartDate.Value.Date;
             DateTime endDate = dtpEndDate.Value.Date;
-
-
             if (endDate < startDate || endDate > DateTime.Today)
             {
                 MessageBox.Show("Please select a valid date period.");
                 return;
             }
-
-
             int totalDrinksSold = orderService.GetTotalDrinksSold(startDate, endDate);
             decimal turnover = orderService.GetTurnover(startDate, endDate);
             int numberOfCustomers = orderService.GetNumberOfCustomers(startDate, endDate);
-
-
             lblTotalSales.Text = $"{totalDrinksSold}";
-            lblTurnover.Text = $"{turnover:F2}";
+            lblTurnover.Text = $"€{turnover:F2}";
             lblNumCustomers.Text = $"{numberOfCustomers}";
-
-
         }
-
-
-
 
 
         private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
@@ -425,18 +412,6 @@ namespace SomerenUI
             Bar_Managment bar_Managment = new Bar_Managment();
             bar_Managment.ShowDialog();
         }
-
-
-
-        private void btnPlaceOrder_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-
-
-
 
         private void CalculateAmount()
         {
